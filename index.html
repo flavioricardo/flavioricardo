@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flávio Ricardo — Frontend Engineer</title>
+<meta name="description" content="Frontend Engineer — React, Next.js, TypeScript. 10+ years building design systems, SaaS and products focused on performance and accessibility.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+  :root[data-theme="light"] {
+    --bg: #fbfbfa; --bg2: #f2f1ee; --card: #ffffff; --fg: #16161a;
+    --muted: #6b6b72; --border: #e4e3de; --stripe: #eae9e4;
+    --header-bg: rgba(251, 251, 250, .72);
+    --accent: #2f6bed; --accent-fg: #ffffff;
+    --accent-glow: rgba(47, 107, 237, .16);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f0f11; --bg2: #17171b; --card: #151519; --fg: #f4f4f2;
+    --muted: #9a9aa4; --border: #26262c; --stripe: #202027;
+    --header-bg: rgba(15, 15, 17, .72);
+    --accent: #5b8bf5; --accent-fg: #0f0f11;
+    --accent-glow: rgba(91, 139, 245, .18);
+  }
+
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: "Instrument Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    transition: background .35s ease, color .35s ease;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: #2f6bed; color: #fff; }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .serif { font-family: 'Newsreader', serif; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 16px clamp(20px, 5vw, 64px);
+    background: var(--header-bg); backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .brand { display: flex; align-items: baseline; gap: 10px; }
+  .brand-name { font-family: 'Newsreader', serif; font-size: 21px; font-weight: 600; letter-spacing: -.01em; }
+  .brand-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: .04em; }
+  nav.site { display: flex; align-items: center; gap: clamp(6px, 2vw, 26px); }
+  .navlink { font-size: 14px; color: var(--muted); transition: color .2s ease; }
+  .navlink:hover { color: var(--fg); }
+  .navlink--work { display: none; }
+  .pill-btn {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .06em;
+    background: transparent; color: var(--fg); border: 1px solid var(--border);
+    border-radius: 999px; padding: 6px 11px; cursor: pointer;
+  }
+
+  main { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
+
+  .hero { padding: clamp(64px, 12vh, 150px) 0 clamp(48px, 9vh, 96px); }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: .08em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-family: 'Newsreader', serif; font-weight: 500;
+    font-size: clamp(38px, 6.4vw, 82px); line-height: 1.02; letter-spacing: -.02em;
+    margin: 0 0 30px; max-width: 15ch; text-wrap: balance;
+  }
+  .hero-sub {
+    font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; color: var(--muted);
+    max-width: 52ch; margin: 0 0 38px; text-wrap: pretty;
+  }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .cta-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: var(--accent-fg);
+    font-weight: 600; font-size: 15px; padding: 14px 24px; border-radius: 999px;
+    transition: transform .2s ease;
+  }
+  .cta-primary:hover { transform: translateY(-2px); }
+  .cta-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--fg); font-weight: 500; font-size: 15px;
+    padding: 14px 22px; border-radius: 999px; border: 1px solid var(--border);
+    transition: background .2s ease;
+  }
+  .cta-secondary:hover { background: var(--bg2); }
+  .availability {
+    display: flex; align-items: center; gap: 9px; margin-top: 34px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--muted);
+  }
+  .availability .dot {
+    width: 8px; height: 8px; border-radius: 999px;
+    background: var(--accent); box-shadow: 0 0 0 4px var(--accent-glow);
+  }
+
+  section.block { padding: clamp(40px, 7vh, 80px) 0; border-top: 1px solid var(--border); }
+  .sec-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 20px; margin-bottom: 44px;
+  }
+  .sec-title-lg {
+    font-family: 'Newsreader', serif; font-weight: 500;
+    font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -.02em; margin: 0;
+  }
+  .sec-title-md {
+    font-family: 'Newsreader', serif; font-weight: 500;
+    font-size: clamp(22px, 2.8vw, 32px); letter-spacing: -.02em; margin: 0 0 30px;
+  }
+  .sec-count { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); }
+
+  .featured-list { display: flex; flex-direction: column; gap: clamp(48px, 8vh, 96px); }
+  .project { display: grid; grid-template-columns: 1fr; gap: 30px; align-items: center; }
+  .project-shot {
+    aspect-ratio: 16/10; border-radius: 14px; border: 1px solid var(--border);
+    background-image: repeating-linear-gradient(135deg, transparent 0, transparent 11px, var(--stripe) 11px, var(--stripe) 12px);
+    background-color: var(--bg2);
+    display: flex; align-items: flex-end; padding: 16px; position: relative; overflow: hidden;
+  }
+  .project-shot .shot-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--muted);
+    background: var(--card); border: 1px solid var(--border); padding: 5px 10px; border-radius: 6px;
+  }
+  .project-shot .shot-tag {
+    position: absolute; top: 16px; left: 16px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);
+  }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 15px; }
+  .stack-chip {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);
+    border: 1px solid var(--border); padding: 4px 9px; border-radius: 999px;
+  }
+  .project h3 {
+    font-family: 'Newsreader', serif; font-weight: 500;
+    font-size: clamp(24px, 3vw, 33px); letter-spacing: -.01em; margin: 0 0 12px;
+  }
+  .project-desc { font-size: 16px; line-height: 1.55; color: var(--muted); margin: 0 0 16px; max-width: 60ch; text-wrap: pretty; }
+  .project-proof { font-size: 14.5px; line-height: 1.5; margin: 0 0 20px; max-width: 60ch; }
+  .project-proof .proof-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--accent);
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-weight: 600; font-size: 14.5px; color: var(--accent);
+    border-bottom: 1px solid transparent; padding-bottom: 2px;
+    transition: border-bottom-color .2s ease;
+  }
+  .project-link:hover { border-bottom-color: var(--accent); }
+
+  .other-row {
+    display: grid; grid-template-columns: 42px 1fr auto; gap: 18px; align-items: baseline;
+    padding: 20px 6px; border-top: 1px solid var(--border);
+    transition: padding-left .25s ease;
+  }
+  .other-row:hover { padding-left: 14px; }
+  .other-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); }
+  .other-title { font-family: 'Newsreader', serif; font-size: 20px; font-weight: 500; margin-bottom: 5px; }
+  .other-desc { font-size: 14.5px; color: var(--muted); text-wrap: pretty; }
+  .other-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+  .about-copy { max-width: 62ch; }
+  .about-copy .lede { font-size: clamp(17px, 1.7vw, 20px); line-height: 1.6; margin: 0 0 20px; text-wrap: pretty; }
+  .about-copy .body { font-size: 16px; line-height: 1.6; color: var(--muted); margin: 0 0 32px; text-wrap: pretty; }
+  .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 30px; }
+  .fact { border-top: 1px solid var(--border); padding-top: 12px; }
+  .fact-k { font-family: 'Newsreader', serif; font-size: 27px; font-weight: 500; letter-spacing: -.01em; }
+  .fact-v { font-size: 13.5px; color: var(--muted); margin-top: 3px; }
+
+  .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 34px 40px; }
+  .stack-group-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--accent); margin-bottom: 14px;
+  }
+  .stack-items { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack-item {
+    font-size: 14px; color: var(--fg); border: 1px solid var(--border);
+    background: var(--card); padding: 6px 12px; border-radius: 8px;
+  }
+
+  .exp-list { display: flex; flex-direction: column; }
+  .exp {
+    display: grid; grid-template-columns: 1fr; gap: 10px;
+    padding: 26px 0; border-top: 1px solid var(--border);
+  }
+  .exp-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .exp-company { font-family: 'Newsreader', serif; font-size: 22px; font-weight: 500; }
+  .exp-period { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); }
+  .exp-role { font-size: 14.5px; color: var(--accent); font-weight: 600; }
+  .exp-bullets { margin: 6px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .exp-bullets li {
+    font-size: 15px; line-height: 1.5; color: var(--muted);
+    padding-left: 18px; position: relative; text-wrap: pretty;
+  }
+  .exp-bullets li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+
+  .contact { padding: clamp(56px, 10vh, 120px) 0 clamp(48px, 8vh, 90px); border-top: 1px solid var(--border); }
+  .contact h2 {
+    font-family: 'Newsreader', serif; font-weight: 500;
+    font-size: clamp(30px, 5vw, 58px); letter-spacing: -.02em; line-height: 1.05;
+    margin: 0 0 20px; max-width: 16ch; text-wrap: balance;
+  }
+  .contact-sub {
+    font-size: clamp(16px, 1.5vw, 19px); line-height: 1.55; color: var(--muted);
+    max-width: 48ch; margin: 0 0 40px; text-wrap: pretty;
+  }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .contact-card {
+    display: flex; flex-direction: column; gap: 6px; padding: 22px;
+    border: 1px solid var(--border); border-radius: 14px; background: var(--card);
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .contact-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .contact-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
+    letter-spacing: .07em; color: var(--muted);
+  }
+  .contact-value {
+    font-size: 16px; font-weight: 600;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  }
+  .contact-value .arrow { color: var(--accent); }
+
+  footer.site {
+    border-top: 1px solid var(--border); padding: 30px clamp(20px, 5vw, 64px);
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
+  }
+  footer.site span, footer.site a { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); }
+  footer.site a { transition: color .2s ease; }
+  footer.site a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a href="#top" class="brand">
+    <span class="brand-name">Flávio Ricardo</span>
+    <span class="brand-tag">FE</span>
+  </a>
+  <nav class="site">
+    <a href="#work" class="navlink navlink--work" data-t="nav_work"></a>
+    <a href="#about" class="navlink" data-t="nav_about"></a>
+    <a href="#contact" class="navlink" data-t="nav_contact"></a>
+    <button id="lang-toggle" class="pill-btn" type="button"></button>
+    <button id="theme-toggle" class="pill-btn" type="button" aria-label="theme"></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="eyebrow" data-t="eyebrow"></div>
+    <h1 data-t="hero_head"></h1>
+    <p class="hero-sub" data-t="hero_sub"></p>
+    <div class="hero-ctas">
+      <a href="#contact" class="cta-primary"><span data-t="cta_primary"></span> →</a>
+      <a href="#work" class="cta-secondary" data-t="cta_secondary"></a>
+    </div>
+    <div class="availability"><span class="dot"></span><span data-t="availability"></span></div>
+  </section>
+
+  <section id="work" class="block">
+    <div class="sec-head">
+      <h2 class="sec-title-lg" data-t="sec_featured"></h2>
+      <span class="sec-count">03 / 03</span>
+    </div>
+    <div class="featured-list" id="featured-list"></div>
+  </section>
+
+  <section class="block">
+    <h2 class="sec-title-md" data-t="sec_more"></h2>
+    <div id="others-list"></div>
+  </section>
+
+  <section id="about" class="block about-grid">
+    <div>
+      <h2 class="sec-title-lg" style="margin: 0;" data-t="sec_about"></h2>
+    </div>
+    <div class="about-copy">
+      <p class="lede" data-t="about_1"></p>
+      <p class="body" data-t="about_2"></p>
+      <div class="facts" id="facts-list"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="sec-title-md" style="margin-bottom: 34px;" data-t="sec_stack"></h2>
+    <div class="stack-grid" id="stack-grid"></div>
+  </section>
+
+  <section class="block">
+    <h2 class="sec-title-md" style="margin-bottom: 40px;" data-t="sec_exp"></h2>
+    <div class="exp-list" id="exp-list"></div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 data-t="contact_head"></h2>
+    <p class="contact-sub" data-t="contact_sub"></p>
+    <div class="contact-grid" id="contact-grid"></div>
+  </section>
+</main>
+
+<footer class="site">
+  <span>© 2026 Flávio Ricardo · <span data-t="footer_role"></span></span>
+  <a href="https://github.com/flavioricardo" target="_blank" rel="noopener">github.com/flavioricardo ↗</a>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var i18n = {
+    pt: {
+      nav_work: 'Trabalhos', nav_about: 'Sobre', nav_contact: 'Contato',
+      eyebrow: 'Engenheiro de Frontend · React · Next.js · TypeScript',
+      hero_head: 'Construo interfaces em React que viram produtos de verdade.',
+      hero_sub: 'Mais de 10 anos criando design systems, SaaS e produtos com foco em performance e acessibilidade — do design ao deploy.',
+      cta_primary: 'Falar sobre um projeto', cta_secondary: 'Ver trabalhos',
+      availability: 'Disponível para freelance · Remoto, BH (BR)',
+      sec_featured: 'Trabalhos em destaque', sec_more: 'Outros projetos',
+      sec_about: 'Sobre', sec_stack: 'Stack técnica', sec_exp: 'Experiência',
+      proof: 'Prova',
+      about_1: 'Sou engenheiro de frontend há mais de 10 anos, especializado em React, Next.js e TypeScript. Já trabalhei em e-commerce de grande escala na Magalu, em integrações de frontend com IA e RAG, e hoje atuo em produto de recomendações e no design system da Conductor.',
+      about_2: 'Nas horas de projeto próprio, construo SaaS do zero ao deploy, como o Cardápio Zap e o Agenda Fácil. Gosto de código testado, interfaces acessíveis e de software que resolve um problema real.',
+      contact_head: 'Vamos construir algo juntos.',
+      contact_sub: 'Conte sobre o seu projeto — respondo em até um dia útil.',
+      footer_role: 'Engenheiro de Frontend'
+    },
+    en: {
+      nav_work: 'Work', nav_about: 'About', nav_contact: 'Contact',
+      eyebrow: 'Frontend Engineer · React · Next.js · TypeScript',
+      hero_head: 'I build React interfaces that ship as real products.',
+      hero_sub: '10+ years building design systems, SaaS and products focused on performance and accessibility — from design to deploy.',
+      cta_primary: 'Start a project', cta_secondary: 'See work',
+      availability: 'Available for freelance · Remote, BH (BR)',
+      sec_featured: 'Featured work', sec_more: 'More projects',
+      sec_about: 'About', sec_stack: 'Tech stack', sec_exp: 'Experience',
+      proof: 'Proof',
+      about_1: "I've been a frontend engineer for 10+ years, specialized in React, Next.js and TypeScript. I worked on large-scale e-commerce at Magalu, on frontend integrations with AI and RAG, and I'm currently on a recommendations product and the design system at Conductor.",
+      about_2: 'In my own time I build SaaS from zero to deploy, like Cardápio Zap and Agenda Fácil. I care about tested code, accessible interfaces, and software that solves a real problem.',
+      contact_head: "Let's build something together.",
+      contact_sub: 'Tell me about your project — I reply within a business day.',
+      footer_role: 'Frontend Engineer'
+    }
+  };
+
+  function data(lang) {
+    var en = lang === 'en';
+    return {
+      featured: [
+        {
+          tag: 'SaaS', shot: en ? 'shot · Cardápio Zap' : 'captura · Cardápio Zap', title: 'Cardápio Zap',
+          stack: ['React', 'Supabase', 'Vercel'],
+          desc: en ? 'Digital menu system for restaurants — multi-tenant, with plan limits.' : 'Sistema de cardápio digital para restaurantes, multi-tenant, com limites de plano.',
+          proof: en ? 'a real SaaS with auth, plans and multi-tenancy.' : 'capacidade de tocar um SaaS de verdade, com autenticação, planos e multi-tenancy.',
+          href: 'https://cardapio-zap-seven.vercel.app', linkLabel: 'cardapio-zap-seven.vercel.app'
+        },
+        {
+          tag: 'SaaS', shot: en ? 'shot · Agenda Fácil' : 'captura · Agenda Fácil', title: 'Agenda Fácil',
+          stack: ['React', 'Supabase', 'Vercel'],
+          desc: en ? 'Scheduling system — sibling to Cardápio Zap, same infra base.' : 'Sistema de agendamento, par do Cardápio Zap, mesma base de infra.',
+          proof: en ? 'own product in production, with business rules in the database (triggers, RPC).' : 'produto próprio em produção, com regras de negócio no banco (triggers, RPC).',
+          href: 'https://agenda-facil.vercel.app', linkLabel: 'agenda-facil.vercel.app'
+        },
+        {
+          tag: en ? 'Client · Houston, USA' : 'Cliente · Houston, EUA', shot: en ? 'shot · Petree Partners' : 'captura · Petree Partners', title: 'Petree Partners',
+          stack: ['WordPress', 'Elementor', 'Figma'],
+          desc: en ? 'Website build for a Houston consultancy, driven by Figma design, in WordPress/Elementor.' : 'Build de site para consultoria de Houston, guiado por design no Figma, em WordPress/Elementor.',
+          proof: en ? 'work with an international client and delivery in WordPress.' : 'trabalho com cliente internacional e entrega em WordPress.',
+          href: '#', linkLabel: en ? 'private project' : 'projeto privado'
+        }
+      ],
+      others: [
+        { title: 'ZapFlow', desc: en ? 'WhatsApp automation SaaS with JSON/CLI flow definitions (in development).' : 'SaaS de automação de WhatsApp com fluxos definidos por JSON/CLI (em desenvolvimento).', meta: 'WhatsApp Cloud API', href: '#' },
+        { title: 'ComparaVoo', desc: en ? 'Chrome extension comparing domestic flight prices via the Amadeus API. 23 tests in Vitest.' : 'Extensão Chrome que compara preços de voos domésticos via API Amadeus. 23 testes em Vitest.', meta: 'Manifest V3 · Vitest', href: '#' },
+        { title: 'venda-jogos-usados', desc: en ? 'Interactive catalog for physical media with PAC shipping estimate and WhatsApp orders.' : 'Catálogo interativo para mídia física, com frete PAC e pedido por WhatsApp.', meta: 'ViaCEP API', href: 'https://flavioricardo.github.io/venda-jogos-usados' },
+        { title: 'TubeGen', desc: en ? 'Remotion animation MVP: 4 scenes, 60fps 1080p, centralized design tokens.' : 'MVP de animação em Remotion: 4 cenas, 60fps em 1080p, tokens de design centralizados.', meta: 'Remotion · TS', href: '#' },
+        { title: 'todo-app · daily-hero-wod', desc: en ? 'Personal apps with due dates, priorities, TypeScript typing and Vitest tests.' : 'Apps pessoais com datas, prioridades, tipagem em TypeScript e testes em Vitest.', meta: 'Firebase · Vite', href: 'https://github.com/flavioricardo' }
+      ],
+      facts: [
+        { k: '10+', v: en ? 'years of experience' : 'anos de experiência' },
+        { k: 'MBA', v: en ? 'Frontend & Software Architecture' : 'Frontend e Arquitetura de Software' },
+        { k: 'BH · BR', v: en ? 'Remote, for Brazil and abroad' : 'Remoto, Brasil e exterior' },
+        { k: 'AI · RAG', v: en ? 'Frontend for OpenAI/RAG flows' : 'Frontend para fluxos OpenAI/RAG' }
+      ],
+      stack: [
+        { label: 'Core', items: ['JavaScript', 'TypeScript', 'React', 'Next.js'] },
+        { label: en ? 'State' : 'Estado', items: ['Redux', 'Jotai'] },
+        { label: en ? 'Styling' : 'Estilo', items: ['Tailwind CSS', 'styled-components'] },
+        { label: 'Backend / BaaS', items: ['Node.js', 'Express', 'GraphQL', 'Firebase', 'Supabase'] },
+        { label: en ? 'Testing' : 'Testes', items: ['Jest', 'RTL', 'Cypress', 'Vitest'] },
+        { label: 'Design systems', items: ['Storybook', en ? 'Design tokens' : 'Tokens de design'] },
+        { label: 'Infra & build', items: ['Docker', 'AWS', 'Azure', 'CI/CD', 'Vite', 'Webpack'] }
+      ],
+      experience: [
+        {
+          company: 'Conductor (via BairesDev)', role: 'Frontend Engineer', period: en ? 'Sep 2025 — now' : 'Set 2025 — agora',
+          bullets: en
+            ? ['Recommendations Side Panel (AISP), the product’s recommendations panel.', 'Bricks UI Kit — the company design system (components, Storybook).', 'AI Writing Assistant — frontend integration with an AI feature.']
+            : ['Recommendations Side Panel (AISP), painel de recomendações do produto.', 'Bricks UI Kit — design system da empresa (componentização, Storybook).', 'AI Writing Assistant — integração de frontend com recurso de IA.']
+        },
+        {
+          company: 'Persistent Systems / Ascensus', role: 'Frontend Engineer', period: '',
+          bullets: en
+            ? ['Frontend integration with RAG and OpenAI — connecting UI to generative-AI and context-retrieval flows.']
+            : ['Integração de frontend com RAG e OpenAI — conectando interface a fluxos de IA generativa e recuperação de contexto.']
+        },
+        {
+          company: 'Magalu (Magazine Luiza)', role: 'Frontend Engineer · e-commerce', period: '',
+          bullets: en
+            ? ['Search and product pages on the platform.', 'Built a coupon-tag feature with measurable sales impact.', 'Led an accessibility initiative on the platform.']
+            : ['Busca e páginas de produto na plataforma.', 'Feature de tag de cupom com impacto de vendas mensurável.', 'Liderou uma iniciativa de acessibilidade na plataforma.']
+        },
+        {
+          company: 'Freelance', role: en ? 'Frontend · WordPress' : 'Frontend · WordPress', period: '',
+          bullets: en
+            ? ['Web projects for clients and WordPress/Elementor development.', 'Current client: Petree Partners, a consultancy in Houston (USA).']
+            : ['Projetos web para clientes e desenvolvimento em WordPress/Elementor.', 'Cliente atual: Petree Partners, consultoria em Houston (EUA).']
+        }
+      ],
+      contacts: [
+        { label: 'E-mail', value: 'flaviobazana@gmail.com', href: 'mailto:flaviobazana@gmail.com' },
+        { label: 'LinkedIn', value: '/in/flavioricardo', href: 'https://linkedin.com/in/flavioricardo' },
+        { label: 'WhatsApp', value: en ? 'Message me' : 'Chamar', href: 'https://wa.me/5500000000000' },
+        { label: en ? 'Book a call' : 'Agendar call', value: 'cal.com/flavioricardo', href: 'https://cal.com/flavioricardo' }
+      ]
+    };
+  }
+
+  var state = {
+    theme: localStorage.getItem('theme') || 'dark',
+    lang: localStorage.getItem('lang') || 'en'
+  };
+
+  function el(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function renderFeatured(d, t) {
+    var list = document.getElementById('featured-list');
+    list.textContent = '';
+    d.featured.forEach(function (p) {
+      var article = el('article', 'project');
+
+      var shot = el('div', 'project-shot');
+      shot.appendChild(el('span', 'shot-label', p.shot));
+      shot.appendChild(el('span', 'shot-tag', p.tag));
+      article.appendChild(shot);
+
+      var body = el('div');
+      var chips = el('div', 'project-stack');
+      p.stack.forEach(function (s) { chips.appendChild(el('span', 'stack-chip', s)); });
+      body.appendChild(chips);
+      body.appendChild(el('h3', null, p.title));
+      body.appendChild(el('p', 'project-desc', p.desc));
+
+      var proof = el('p', 'project-proof');
+      proof.appendChild(el('span', 'proof-label', t.proof + ' · '));
+      proof.appendChild(document.createTextNode(p.proof));
+      body.appendChild(proof);
+
+      var link = el('a', 'project-link', p.linkLabel + ' ↗');
+      link.href = p.href;
+      if (p.href !== '#') { link.target = '_blank'; link.rel = 'noopener'; }
+      body.appendChild(link);
+
+      article.appendChild(body);
+      list.appendChild(article);
+    });
+  }
+
+  function renderOthers(d) {
+    var list = document.getElementById('others-list');
+    list.textContent = '';
+    d.others.forEach(function (o, i) {
+      var row = el('a', 'other-row');
+      row.href = o.href;
+      if (o.href !== '#') { row.target = '_blank'; row.rel = 'noopener'; }
+      row.appendChild(el('span', 'other-num', String(i + 1).padStart(2, '0')));
+      var mid = el('div');
+      mid.appendChild(el('div', 'other-title', o.title));
+      mid.appendChild(el('div', 'other-desc', o.desc));
+      row.appendChild(mid);
+      row.appendChild(el('span', 'other-meta', o.meta));
+      list.appendChild(row);
+    });
+  }
+
+  function renderFacts(d) {
+    var grid = document.getElementById('facts-list');
+    grid.textContent = '';
+    d.facts.forEach(function (f) {
+      var card = el('div', 'fact');
+      card.appendChild(el('div', 'fact-k', f.k));
+      card.appendChild(el('div', 'fact-v', f.v));
+      grid.appendChild(card);
+    });
+  }
+
+  function renderStack(d) {
+    var grid = document.getElementById('stack-grid');
+    grid.textContent = '';
+    d.stack.forEach(function (g) {
+      var group = el('div');
+      group.appendChild(el('div', 'stack-group-label', g.label));
+      var items = el('div', 'stack-items');
+      g.items.forEach(function (i) { items.appendChild(el('span', 'stack-item', i)); });
+      group.appendChild(items);
+      grid.appendChild(group);
+    });
+  }
+
+  function renderExperience(d) {
+    var list = document.getElementById('exp-list');
+    list.textContent = '';
+    d.experience.forEach(function (e) {
+      var item = el('div', 'exp');
+      var head = el('div', 'exp-head');
+      head.appendChild(el('div', 'exp-company', e.company));
+      head.appendChild(el('div', 'exp-period', e.period));
+      item.appendChild(head);
+      item.appendChild(el('div', 'exp-role', e.role));
+      var ul = el('ul', 'exp-bullets');
+      e.bullets.forEach(function (b) { ul.appendChild(el('li', null, b)); });
+      item.appendChild(ul);
+      list.appendChild(item);
+    });
+  }
+
+  function renderContacts(d) {
+    var grid = document.getElementById('contact-grid');
+    grid.textContent = '';
+    d.contacts.forEach(function (m) {
+      var card = el('a', 'contact-card');
+      card.href = m.href;
+      if (m.href.indexOf('mailto:') !== 0) { card.target = '_blank'; card.rel = 'noopener'; }
+      card.appendChild(el('span', 'contact-label', m.label));
+      var value = el('span', 'contact-value');
+      value.appendChild(document.createTextNode(m.value + ' '));
+      value.appendChild(el('span', 'arrow', '↗'));
+      card.appendChild(value);
+      grid.appendChild(card);
+    });
+  }
+
+  function render() {
+    var t = i18n[state.lang];
+    var d = data(state.lang);
+
+    document.documentElement.setAttribute('data-theme', state.theme);
+    document.documentElement.lang = state.lang === 'pt' ? 'pt-BR' : 'en';
+
+    document.querySelectorAll('[data-t]').forEach(function (node) {
+      node.textContent = t[node.getAttribute('data-t')];
+    });
+
+    document.getElementById('lang-toggle').textContent = state.lang === 'pt' ? 'PT / EN' : 'EN / PT';
+    document.getElementById('theme-toggle').textContent = state.theme === 'dark' ? 'LIGHT' : 'DARK';
+
+    renderFeatured(d, t);
+    renderOthers(d);
+    renderFacts(d);
+    renderStack(d);
+    renderExperience(d);
+    renderContacts(d);
+  }
+
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    state.theme = state.theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', state.theme);
+    render();
+  });
+
+  document.getElementById('lang-toggle').addEventListener('click', function () {
+    state.lang = state.lang === 'pt' ? 'en' : 'pt';
+    localStorage.setItem('lang', state.lang);
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
