@@ -660,6 +660,26 @@
           wire: 'calendar'
         },
         {
+          title: 'Claru', url: 'claru.app',
+          kind: en ? 'app · well-being' : 'app · bem-estar',
+          desc: en
+            ? 'App to cut down or quit alcohol: daily check-ins, sobriety counter and an SOS mode. Data stays on the device; analytics only with consent.'
+            : 'App para reduzir ou zerar o consumo de álcool: check-in diário, contagem de sobriedade e modo SOS. Dados ficam no aparelho; analytics só com consentimento.',
+          href: 'https://claru.app',
+          linkLabel: en ? 'visit' : 'visitar',
+          wire: 'streak'
+        },
+        {
+          title: 'Trajeto', url: 'trajeto-app-flavioricardo91.vercel.app',
+          kind: en ? 'app · sports' : 'app · esporte',
+          desc: en
+            ? 'Turns a run or ride into a transparent PNG overlay for your story: paste a GPX, search a place or pick start and end, customize and download.'
+            : 'Transforma treino ou pedal em um overlay PNG transparente para o story: cole um GPX, busque um lugar ou marque início e fim, personalize e baixe.',
+          href: 'https://trajeto-app-flavioricardo91.vercel.app',
+          linkLabel: en ? 'visit' : 'visitar',
+          wire: 'route'
+        },
+        {
           title: 'Petree Partners', url: 'petreepartners.com',
           kind: en ? 'client · Houston, USA' : 'cliente · Houston, EUA',
           desc: en
@@ -823,6 +843,53 @@
       var cta = el('div', 'w-cta');
       cta.appendChild(el('i'));
       body.appendChild(cta);
+    } else if (kind === 'streak') {
+      var counter = el('div');
+      counter.style.cssText = 'display:flex;align-items:baseline;gap:8px;margin-bottom:12px;';
+      var num = el('div', 'w-box');
+      num.style.cssText = 'width:54px;height:30px;background:var(--wire2);border-radius:4px;';
+      counter.appendChild(num);
+      var lbl = el('div', 'w-line'); lbl.style.width = '70px';
+      counter.appendChild(lbl);
+      body.appendChild(counter);
+      var dots = el('div');
+      dots.style.cssText = 'display:flex;gap:6px;margin-bottom:14px;';
+      for (i = 0; i < 7; i++) {
+        var dot = el('span');
+        dot.style.cssText = 'width:14px;height:14px;border-radius:999px;' +
+          (i < 5 ? 'background:var(--redline);opacity:.85;' : 'border:1px solid var(--line);background:var(--wire);');
+        dots.appendChild(dot);
+      }
+      body.appendChild(dots);
+      var sos = el('div', 'w-cta');
+      sos.appendChild(el('i'));
+      body.appendChild(sos);
+    } else if (kind === 'route') {
+      var wrap = el('div');
+      wrap.style.cssText = 'position:relative;height:96px;margin-bottom:10px;';
+      var svgNS = 'http://www.w3.org/2000/svg';
+      var svg = document.createElementNS(svgNS, 'svg');
+      svg.setAttribute('viewBox', '0 0 200 90');
+      svg.setAttribute('preserveAspectRatio', 'none');
+      svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+      var path = document.createElementNS(svgNS, 'path');
+      path.setAttribute('d', 'M8 78 C 40 70, 34 30, 66 34 S 110 66, 138 50 S 178 16, 192 12');
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', 'var(--redline)');
+      path.setAttribute('stroke-width', '3');
+      path.setAttribute('stroke-linecap', 'round');
+      path.style.opacity = '.85';
+      svg.appendChild(path);
+      wrap.appendChild(svg);
+      body.appendChild(wrap);
+      var stats = el('div');
+      stats.style.cssText = 'display:flex;gap:10px;';
+      [46, 34, 40].forEach(function (w) {
+        var s = el('div', 'w-line strong');
+        s.style.width = w + 'px';
+        stats.appendChild(s);
+      });
+      body.appendChild(stats);
     } else if (kind === 'calendar') {
       var grid = el('div', 'w-week');
       for (i = 0; i < 7; i++) grid.appendChild(el('div', 'day'));
