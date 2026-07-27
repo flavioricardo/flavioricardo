@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flávio Ricardo — Frontend Engineer</title>
-<meta name="description" content="Frontend engineer in Belo Horizonte. React, Next.js, TypeScript. Design systems by day, my own SaaS products after hours.">
+<meta name="description" content="Frontend engineer with 10+ years on products used by millions: iFood, Magalu, Itaú, Conductor. React, Next.js, TypeScript, accessibility.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -103,9 +103,9 @@
   .hero h1 {
     font-family: "Archivo Black", "Archivo", system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(42px, 7vw, 92px);
+    font-size: clamp(40px, 6.6vw, 88px);
     line-height: .98; letter-spacing: -.025em;
-    margin: 0; max-width: 14ch; text-wrap: balance;
+    margin: 0; max-width: 15ch; text-wrap: balance;
   }
   .redline-dim {
     position: relative; height: 26px; margin: 14px 0 26px; max-width: 560px;
@@ -126,7 +126,7 @@
   }
   .hero-sub {
     font-size: clamp(16.5px, 1.55vw, 19px); line-height: 1.6; color: var(--muted);
-    max-width: 56ch; margin: 0 0 34px; text-wrap: pretty;
+    max-width: 58ch; margin: 0 0 34px; text-wrap: pretty;
   }
   .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
   .cta-primary {
@@ -179,7 +179,7 @@
     letter-spacing: -.02em; margin: 0; line-height: 1.05;
   }
 
-  /* ---------- featured projects ---------- */
+  /* ---------- case studies (commercial work) ---------- */
   .featured-list { display: flex; flex-direction: column; gap: clamp(44px, 7vh, 80px); }
   .project { display: grid; grid-template-columns: 1fr; gap: 26px; align-items: center; }
   @media (min-width: 880px) {
@@ -196,33 +196,60 @@
     border-bottom: 1px solid var(--line); padding: 8px 12px;
     font-family: "IBM Plex Mono", monospace; font-size: 10.5px; color: var(--muted);
   }
-  .frame-bar .sq { width: 8px; height: 8px; border: 1px solid var(--line); border-radius: 2px; }
-  .frame-body { padding: 18px; min-height: 230px; position: relative; }
+  .frame-bar .sq { width: 8px; height: 8px; border: 1px solid var(--line); border-radius: 2px; flex: none; }
+  .frame-body { padding: 18px; min-height: 220px; position: relative; }
 
   /* wireframe atoms */
   .w-line { height: 8px; border-radius: 2px; background: var(--wire); }
   .w-line.strong { background: var(--wire2); }
   .w-box { border-radius: 3px; background: var(--wire); }
-  .w-item { display: grid; grid-template-columns: 40px 1fr 48px; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); }
-  .w-item .thumb { width: 40px; height: 40px; border-radius: 4px; background: var(--wire2); }
-  .w-item .lines { display: flex; flex-direction: column; gap: 6px; }
-  .w-item .price { height: 10px; border-radius: 2px; background: var(--wire2); }
-  .w-cta {
-    margin-top: 14px; height: 36px; border-radius: 4px; background: var(--redline);
-    opacity: .9; display: flex; align-items: center; justify-content: center;
-  }
-  .w-cta i { display: block; width: 90px; height: 7px; border-radius: 2px; background: var(--redline-ink); opacity: .8; }
-  .w-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
-  .w-week .day { height: 12px; border-radius: 2px; background: var(--wire2); margin-bottom: 2px; }
-  .w-week .slot { height: 30px; border-radius: 3px; background: var(--wire); }
-  .w-week .slot.busy { background: var(--redline); opacity: .85; }
   .w-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
   .w-nav .links { display: flex; gap: 8px; }
   .w-nav .links i { display: block; width: 34px; height: 7px; border-radius: 2px; background: var(--wire); }
-  .w-hero { display: grid; grid-template-columns: 3fr 2fr; gap: 14px; margin-bottom: 14px; }
-  .w-hero .copy { display: flex; flex-direction: column; gap: 8px; justify-content: center; }
-  .w-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .w-cards .c { height: 52px; border-radius: 4px; background: var(--wire); }
+
+  /* order board (iFood) */
+  .w-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .w-col { border: 1px solid var(--line); border-radius: 4px; padding: 8px; display: flex; flex-direction: column; gap: 7px; background: var(--paper); }
+  .w-col .col-h { height: 7px; width: 60%; border-radius: 2px; background: var(--wire2); margin-bottom: 2px; }
+  .w-ticket { border-radius: 3px; background: var(--wire); height: 30px; }
+  .w-ticket.hot { background: var(--redline); opacity: .85; }
+
+  /* product page (Magalu) */
+  .w-pdp { display: grid; grid-template-columns: 5fr 4fr; gap: 14px; }
+  .w-pdp .gallery { border-radius: 4px; background: var(--wire); min-height: 150px; }
+  .w-pdp .buy { display: flex; flex-direction: column; gap: 8px; }
+  .w-tag {
+    align-self: flex-start; font-family: "IBM Plex Mono", monospace; font-size: 9px;
+    color: var(--redline); border: 1px dashed var(--redline); border-radius: 3px; padding: 2px 6px;
+  }
+  .w-price { height: 14px; width: 55%; border-radius: 2px; background: var(--wire2); }
+  .w-buy-btn { height: 30px; border-radius: 4px; background: var(--redline); opacity: .85; margin-top: 4px; }
+
+  /* side panel (Conductor) */
+  .w-app { display: grid; grid-template-columns: 3fr 2fr; gap: 10px; }
+  .w-main { display: flex; flex-direction: column; gap: 8px; opacity: .55; }
+  .w-main .row { height: 22px; border-radius: 3px; background: var(--wire); }
+  .w-panel { border: 1px solid var(--redline); border-radius: 4px; padding: 8px; display: flex; flex-direction: column; gap: 7px; }
+  .w-rec { border: 1px solid var(--line); border-radius: 3px; padding: 6px; background: var(--paper); }
+  .w-rec .t { height: 6px; width: 70%; border-radius: 2px; background: var(--wire2); margin-bottom: 5px; }
+  .w-rec .score { height: 4px; border-radius: 2px; background: var(--wire); position: relative; overflow: hidden; }
+  .w-rec .score i { position: absolute; inset: 0; right: auto; display: block; background: var(--redline); border-radius: 2px; }
+
+  /* mini wireframes (own products) */
+  .w-item { display: grid; grid-template-columns: 26px 1fr 30px; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .w-item .thumb { width: 26px; height: 26px; border-radius: 3px; background: var(--wire2); }
+  .w-item .lines { display: flex; flex-direction: column; gap: 4px; }
+  .w-item .lines .w-line { height: 6px; }
+  .w-item .price { height: 7px; border-radius: 2px; background: var(--wire2); }
+  .w-cta { margin-top: 10px; height: 24px; border-radius: 3px; background: var(--redline); opacity: .85; display: flex; align-items: center; justify-content: center; }
+  .w-cta i { display: block; width: 60px; height: 5px; border-radius: 2px; background: var(--redline-ink); opacity: .8; }
+  .w-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .w-week .day { height: 8px; border-radius: 2px; background: var(--wire2); margin-bottom: 1px; }
+  .w-week .slot { height: 18px; border-radius: 2px; background: var(--wire); }
+  .w-week .slot.busy { background: var(--redline); opacity: .85; }
+  .w-hero-mini { display: grid; grid-template-columns: 3fr 2fr; gap: 8px; }
+  .w-hero-mini .copy { display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+  .w-hero-mini .img { border-radius: 3px; background: var(--wire); min-height: 54px; }
 
   .callout {
     position: absolute; z-index: 2;
@@ -241,7 +268,11 @@
 
   .project-info h3 {
     font-weight: 700; font-size: clamp(23px, 2.8vw, 31px);
-    letter-spacing: -.02em; margin: 0 0 10px;
+    letter-spacing: -.02em; margin: 0 0 4px;
+  }
+  .project-role {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .05em;
+    color: var(--muted); margin-bottom: 12px;
   }
   .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
   .stack-chip {
@@ -249,42 +280,34 @@
     border: 1px solid var(--line); padding: 3px 8px; border-radius: 3px;
   }
   .project-desc { font-size: 16px; line-height: 1.55; color: var(--muted); margin: 0 0 14px; max-width: 58ch; text-wrap: pretty; }
-  .project-note {
-    font-family: "IBM Plex Mono", monospace; font-size: 12.5px; line-height: 1.55;
-    color: var(--redline); margin: 0 0 18px; max-width: 60ch;
+  .project-metrics { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 4px; padding: 0; list-style: none; }
+  .project-metrics li {
+    font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--redline);
+    border: 1px solid color-mix(in srgb, var(--redline) 40%, transparent);
+    border-radius: 3px; padding: 5px 9px;
   }
-  .project-link {
-    display: inline-flex; align-items: center; gap: 7px;
-    font-weight: 600; font-size: 14.5px; color: var(--ink);
-    border-bottom: 2px solid var(--redline); padding-bottom: 2px;
-    transition: color .15s ease;
-  }
-  .project-link:hover { color: var(--redline); }
 
-  /* ---------- bench table ---------- */
-  .bench-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--card); }
-  table.bench { width: 100%; border-collapse: collapse; min-width: 640px; }
-  .bench th {
-    font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 500;
-    text-transform: uppercase; letter-spacing: .07em; color: var(--muted);
-    text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line);
+  /* ---------- own products ---------- */
+  .products { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 800px) { .products { grid-template-columns: repeat(3, 1fr); } }
+  .pcard { border: 1px solid var(--line); border-radius: 6px; background: var(--card); display: flex; flex-direction: column; }
+  .pcard .frame-body { min-height: 130px; padding: 14px; }
+  .pcard-info { padding: 16px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .pcard-info h3 { font-size: 18px; font-weight: 700; letter-spacing: -.01em; margin: 0; }
+  .pcard-kind {
+    align-self: flex-start; font-family: "IBM Plex Mono", monospace; font-size: 10px;
+    letter-spacing: .05em; color: var(--redline);
+    border: 1px solid color-mix(in srgb, var(--redline) 40%, transparent);
+    border-radius: 3px; padding: 3px 7px;
   }
-  .bench td { padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 14.5px; }
-  .bench tr:last-child td { border-bottom: none; }
-  .bench tbody tr { transition: background .15s ease; }
-  .bench tbody tr:hover { background: var(--paper2); }
-  .bench .bname { font-weight: 600; white-space: nowrap; }
-  .bench .bname a { border-bottom: 2px solid var(--redline); padding-bottom: 1px; }
-  .bench .bname a:hover { color: var(--redline); }
-  .bench .bdesc { color: var(--muted); line-height: 1.5; min-width: 260px; }
-  .bench .bstack { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--muted); white-space: nowrap; }
-  .status {
-    font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .04em;
-    padding: 3px 8px; border-radius: 3px; white-space: nowrap;
+  .pcard-desc { font-size: 14px; line-height: 1.5; color: var(--muted); margin: 0; flex: 1; }
+  .pcard-link { font-weight: 600; font-size: 13.5px; border-bottom: 2px solid var(--redline); align-self: flex-start; padding-bottom: 1px; }
+  .pcard-link:hover { color: var(--redline); }
+  .gh-line {
+    margin-top: 20px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted);
   }
-  .status.live { background: var(--redline); color: var(--redline-ink); }
-  .status.dev { border: 1px solid var(--redline); color: var(--redline); }
-  .status.proto { border: 1px solid var(--line); color: var(--muted); }
+  .gh-line a { color: var(--ink); border-bottom: 1px solid var(--line); }
+  .gh-line a:hover { color: var(--redline); border-bottom-color: var(--redline); }
 
   /* ---------- about ---------- */
   .about-copy { max-width: 64ch; }
@@ -339,6 +362,10 @@
   .exp-bullets li::before {
     content: ""; position: absolute; left: 0; top: .55em;
     width: 6px; height: 6px; background: var(--redline);
+  }
+  .exp-earlier {
+    padding: 18px 0; font-family: "IBM Plex Mono", monospace; font-size: 12px;
+    color: var(--muted); line-height: 1.6;
   }
 
   /* ---------- contact ---------- */
@@ -424,7 +451,7 @@
     <h1 data-t="hero_head"></h1>
     <div class="redline-dim" aria-hidden="true">
       <span class="dline"></span>
-      <span class="dlabel">clamp(42px, 7vw, 92px) · Archivo Black</span>
+      <span class="dlabel">clamp(40px, 6.6vw, 88px) · Archivo Black</span>
     </div>
     <p class="hero-sub" data-t="hero_sub"></p>
     <div class="hero-ctas">
@@ -455,22 +482,11 @@
 
   <section class="block">
     <div class="sec-head">
-      <div class="sec-id"><span data-t="sec_more_id"></span></div>
-      <h2 class="sec-title" data-t="sec_more"></h2>
+      <div class="sec-id"><span data-t="sec_products_id"></span></div>
+      <h2 class="sec-title" data-t="sec_products"></h2>
     </div>
-    <div class="bench-wrap">
-      <table class="bench">
-        <thead>
-          <tr>
-            <th data-t="th_project"></th>
-            <th data-t="th_what"></th>
-            <th data-t="th_stack"></th>
-            <th data-t="th_status"></th>
-          </tr>
-        </thead>
-        <tbody id="bench-body"></tbody>
-      </table>
-    </div>
+    <div class="products" id="products-list"></div>
+    <p class="gh-line"><span data-t="gh_line"></span> <a href="https://github.com/flavioricardo" target="_blank" rel="noopener">github.com/flavioricardo ↗</a></p>
   </section>
 
   <section id="about" class="block">
@@ -499,6 +515,7 @@
       <h2 class="sec-title" data-t="sec_exp"></h2>
     </div>
     <div class="exp-list" id="exp-list"></div>
+    <p class="exp-earlier" data-t="exp_earlier"></p>
   </section>
 
   <section id="contact" class="contact">
@@ -520,46 +537,48 @@
 
   var i18n = {
     pt: {
-      nav_work: 'Projetos', nav_about: 'Sobre', nav_contact: 'Contato',
-      eyebrow: 'Engenharia de frontend · Belo Horizonte, BR',
-      hero_head: 'Dez anos de frontend que vai pro ar.',
-      hero_sub: 'Sou o Flávio Ricardo. Escrevi React para o e-commerce da Magalu, cuido do design system da Conductor e, nas horas vagas, tiro SaaS próprios do papel.',
-      cta_primary: 'Me conte seu projeto', cta_secondary: 'Ver projetos',
-      availability: 'aberto a freelance · remoto',
+      nav_work: 'Trabalho', nav_about: 'Sobre', nav_contact: 'Contato',
+      eyebrow: 'Engenharia de frontend · React · Next.js · TypeScript',
+      hero_head: 'Frontend para produtos usados por milhões.',
+      hero_sub: 'Sou Flávio Ricardo, engenheiro de frontend com mais de dez anos de estrada. Hoje construo o painel de recomendações e o design system da Conductor. Antes, passei pelo Order Manager do iFood, pela loja da Magalu e pelo internet banking corporativo do Itaú.',
+      cta_primary: 'Falar comigo', cta_secondary: 'Ver trabalho',
+      availability: 'disponível para consultoria e freelance · remoto',
       tokens_label: 'tokens desta página',
-      sec_featured_id: 'SEC 01 · com usuários reais', sec_featured: 'Em produção',
-      sec_more_id: 'SEC 02 · experimentos e utilitários', sec_more: 'Na bancada',
+      sec_featured_id: 'SEC 01 · produto comercial', sec_featured: 'Trabalho em escala',
+      sec_products_id: 'SEC 02 · SaaS e clientes próprios', sec_products: 'Produtos próprios',
+      gh_line: 'Protótipos e experimentos ficam no',
       sec_about_id: 'SEC 03', sec_about: 'Sobre',
       sec_stack_id: 'SEC 04', sec_stack: 'Ferramentas',
       sec_exp_id: 'SEC 05', sec_exp: 'Experiência',
       sec_contact_id: 'SEC 06 · aprovação',
-      th_project: 'projeto', th_what: 'o que é', th_stack: 'stack', th_status: 'status',
-      about_1: 'Comecei em agência, passei por e-commerce de grande escala e hoje divido a semana entre um painel de recomendações e o Bricks, o design system da Conductor. No caminho, integrei frontend com OpenAI e RAG na Persistent e liderei uma iniciativa de acessibilidade na Magalu.',
-      about_2: 'Projeto próprio é onde eu testo opinião. O Cardápio Zap e o Agenda Fácil têm usuários de verdade, e foram eles que me ensinaram cobrança, limite de plano e migração sem derrubar ninguém. Escrevo teste e cuido de acessibilidade porque já paguei o preço de não fazer isso.',
-      contact_head: 'Tem projeto? Me escreva.',
-      contact_sub: 'Me diga o que você quer construir. Eu leio tudo e respondo em um dia útil, às vezes com perguntas, às vezes já com um plano.',
-      footer_note: 'feito à mão em BH: HTML, CSS e JS puros'
+      about_1: 'Comecei em 2009 fazendo site em PHP. De lá para cá passei por banco, com o Bankline corporativo do Itaú, pelo setor público, com sistemas da educação de São Paulo usados por mais de um milhão de pessoas, e por dois dos maiores produtos de consumo do Brasil, o iFood e a Magalu. Em produto grande, o frontend carrega dinheiro e reputação: o pedido precisa chegar e o checkout precisa fechar.',
+      about_2: 'Fora do expediente mantenho dois SaaS com clientes reais, o Cardápio Zap e o Agenda Fácil. Eles me dão o outro lado da mesa: precificação, suporte, migração sem downtime. É a experiência de dono que eu levo de volta para o trabalho em time.',
+      contact_head: 'Vamos falar do seu produto.',
+      contact_sub: 'Consultoria, freelance ou uma vaga: me escreva com o contexto e eu respondo em até um dia útil.',
+      footer_note: 'feito à mão em BH: HTML, CSS e JS puros',
+      exp_earlier: '2009 → 2015 · dev web em PHP e .NET: ERPs para o agro, sistemas para a indústria gráfica e sites corporativos.'
     },
     en: {
       nav_work: 'Work', nav_about: 'About', nav_contact: 'Contact',
-      eyebrow: 'Frontend engineering · Belo Horizonte, BR',
-      hero_head: 'Ten years of frontend that ships.',
-      hero_sub: "I'm Flávio Ricardo. I wrote React for Magalu's e-commerce, I look after the design system at Conductor, and after hours I build my own SaaS products.",
-      cta_primary: 'Tell me about your project', cta_secondary: 'See work',
-      availability: 'open to freelance · remote',
+      eyebrow: 'Frontend engineering · React · Next.js · TypeScript',
+      hero_head: 'Frontend for products used by millions.',
+      hero_sub: "I'm Flávio Ricardo, a frontend engineer with over ten years on the road. Today I build the recommendations panel and the design system at Conductor. Before that, I worked on iFood's Order Manager, Magalu's online store, and Itaú's corporate internet banking.",
+      cta_primary: 'Talk to me', cta_secondary: 'See work',
+      availability: 'available for consulting and freelance · remote',
       tokens_label: 'tokens of this page',
-      sec_featured_id: 'SEC 01 · with real users', sec_featured: 'In production',
-      sec_more_id: 'SEC 02 · experiments and utilities', sec_more: 'On the bench',
+      sec_featured_id: 'SEC 01 · commercial product', sec_featured: 'Work at scale',
+      sec_products_id: 'SEC 02 · own SaaS and clients', sec_products: 'Own products',
+      gh_line: 'Prototypes and experiments live on',
       sec_about_id: 'SEC 03', sec_about: 'About',
       sec_stack_id: 'SEC 04', sec_stack: 'Tools',
       sec_exp_id: 'SEC 05', sec_exp: 'Experience',
       sec_contact_id: 'SEC 06 · sign-off',
-      th_project: 'project', th_what: 'what it is', th_stack: 'stack', th_status: 'status',
-      about_1: "I started at an agency, went through large-scale e-commerce, and now split my week between a recommendations panel and Bricks, Conductor's design system. Along the way I wired frontends to OpenAI and RAG at Persistent and led an accessibility push at Magalu.",
-      about_2: "Side projects are where I test my opinions. Cardápio Zap and Agenda Fácil have real users, and they are the ones who taught me billing, plan limits, and how to migrate without taking anyone down. I write tests and care about accessibility because I've paid the price of skipping both.",
-      contact_head: 'Got a project? Write to me.',
-      contact_sub: "Tell me what you want to build. I read everything and reply within a business day, sometimes with questions, sometimes with a plan.",
-      footer_note: 'hand-built in BH with plain HTML, CSS and JS'
+      about_1: "I started in 2009 building PHP websites. Since then I've worked in banking, on Itaú's corporate internet banking, in the public sector, on São Paulo education systems used by over a million people, and on two of Brazil's biggest consumer products, iFood and Magalu. On large products, the frontend carries money and reputation: the order has to arrive and the checkout has to close.",
+      about_2: "After hours I run two SaaS products with real customers, Cardápio Zap and Agenda Fácil. They give me the other side of the table: pricing, support, zero-downtime migrations. That owner's perspective is what I bring back to team work.",
+      contact_head: "Let's talk about your product.",
+      contact_sub: 'Consulting, freelance or a full-time role: write to me with some context and I reply within a business day.',
+      footer_note: 'hand-built in BH with plain HTML, CSS and JS',
+      exp_earlier: '2009 → 2015 · web dev in PHP and .NET: agribusiness ERPs, print-industry systems and corporate sites.'
     }
   };
 
@@ -568,102 +587,148 @@
     return {
       featured: [
         {
-          title: 'Cardápio Zap', url: 'cardapio-zap-seven.vercel.app',
-          stack: ['React', 'Supabase', 'Vercel'],
+          title: 'iFood · Order Manager', url: 'gestordepedidos.ifood.com.br',
+          role: en ? 'Frontend Engineer · 2022 → 2024' : 'Frontend Engineer · 2022 → 2024',
+          stack: ['React', 'Next.js', 'Jotai'],
           desc: en
-            ? 'A digital menu for restaurants. Each house gets its own space, its own plan, and its own item limits.'
-            : 'Cardápio digital para restaurantes. Cada casa tem seu espaço, seu plano e seu limite de itens.',
-          note: en
-            ? '// in production, with auth, per-plan billing and multi-tenancy'
-            : '// em produção, com autenticação, cobrança por plano e multi-tenancy',
-          href: 'https://cardapio-zap-seven.vercel.app', linkLabel: 'cardapio-zap-seven.vercel.app',
-          wire: 'menu',
-          callout: en ? 'order via WhatsApp' : 'pedido via WhatsApp'
+            ? 'The platform that runs restaurant order flow in over 1,700 cities, serving 43 million users. I built logistics and promotion features and led the state migration from Redux to Jotai.'
+            : 'A plataforma que opera o fluxo de pedidos dos restaurantes em mais de 1.700 cidades, para 43 milhões de usuários. Construí recursos de logística e promoções e conduzi a migração de estado de Redux para Jotai.',
+          metrics: en
+            ? ['70M orders/month', 'order processing −15%', 'campaign sales +20%']
+            : ['70M pedidos/mês', 'tempo de pedido −15%', 'vendas em campanha +20%'],
+          wire: 'board',
+          callout: en ? 'incoming order' : 'pedido chegando'
+        },
+        {
+          title: 'Magalu · e-commerce', url: 'magazineluiza.com.br',
+          role: 'Frontend Engineer · Luizalabs · 2024 → 2025',
+          stack: ['React', 'Next.js', 'Tailwind CSS'],
+          desc: en
+            ? 'Search, product pages, home and navigation on one of the largest online stores in Brazil. I shipped the coupon tag on product cards and led an accessibility initiative aligned with WCAG.'
+            : 'Busca, página de produto, home e navegação de uma das maiores lojas online do Brasil. Entreguei a tag de cupom nos cards de produto e liderei uma iniciativa de acessibilidade alinhada à WCAG.',
+          metrics: en
+            ? ['sales on tagged items +8%', 'WCAG accessibility', 'Apollo cache tuning']
+            : ['vendas com tag +8%', 'acessibilidade WCAG', 'cache Apollo otimizado'],
+          wire: 'pdp',
+          callout: en ? 'coupon tag' : 'tag de cupom'
+        },
+        {
+          title: 'Conductor · AISP + Bricks', url: 'conductor.com',
+          role: 'Frontend Engineer · BairesDev · 2025 → ' + (en ? 'now' : 'atual'),
+          stack: ['React', 'TypeScript', 'Storybook'],
+          desc: en
+            ? 'The Recommendations Side Panel turns AI Search Performance signals into prioritized actions. I build the priority scoring UI and context-aware filters, and maintain Bricks, the design system used across product teams.'
+            : 'O Recommendations Side Panel transforma sinais de AI Search Performance em ações priorizadas. Construo a interface de score de prioridade e os filtros contextuais, e mantenho o Bricks, design system usado pelos times de produto.',
+          metrics: en
+            ? ['priority scoring UI', 'WCAG components', 'OpenAI + RAG integration']
+            : ['UI de score de prioridade', 'componentes WCAG', 'integração OpenAI + RAG'],
+          wire: 'panel',
+          callout: en ? 'priority score' : 'score de prioridade'
+        }
+      ],
+      products: [
+        {
+          title: 'Cardápio Zap', url: 'cardapio-zap-seven.vercel.app',
+          kind: en ? 'SaaS · active billing' : 'SaaS · cobrança ativa',
+          desc: en
+            ? 'Digital menu for restaurants: multi-tenant, plans with limits, WhatsApp checkout.'
+            : 'Cardápio digital para restaurantes: multi-tenant, planos com limite e pedido pelo WhatsApp.',
+          href: 'https://cardapio-zap-seven.vercel.app',
+          linkLabel: en ? 'visit' : 'visitar',
+          wire: 'menu'
         },
         {
           title: 'Agenda Fácil', url: 'agenda-facil.vercel.app',
-          stack: ['React', 'Supabase', 'Vercel'],
+          kind: en ? 'SaaS · in production' : 'SaaS · em produção',
           desc: en
-            ? 'Scheduling for service providers, sibling to Cardápio Zap on the same infrastructure.'
-            : 'Agendamento para prestadores de serviço, irmão do Cardápio Zap na mesma infraestrutura.',
-          note: en
-            ? '// business rules live in the database: Supabase triggers and RPC'
-            : '// regra de negócio no banco: triggers e RPC no Supabase',
-          href: 'https://agenda-facil.vercel.app', linkLabel: 'agenda-facil.vercel.app',
-          wire: 'calendar',
-          callout: en ? 'booked slot' : 'horário ocupado'
+            ? 'Scheduling for service providers. Business rules live in the database: Supabase triggers and RPC.'
+            : 'Agendamento para prestadores de serviço. Regra de negócio no banco: triggers e RPC no Supabase.',
+          href: 'https://agenda-facil.vercel.app',
+          linkLabel: en ? 'visit' : 'visitar',
+          wire: 'calendar'
         },
         {
           title: 'Petree Partners', url: 'petreepartners.com',
-          stack: ['WordPress', 'Elementor', 'Figma'],
+          kind: en ? 'client · Houston, USA' : 'cliente · Houston, EUA',
           desc: en
-            ? 'Marketing site for a Houston consultancy, from the Figma layout to the WordPress and Elementor build.'
-            : 'Site institucional para uma consultoria de Houston, do layout no Figma à entrega em WordPress e Elementor.',
-          note: en
-            ? '// international client, private project'
-            : '// cliente internacional, projeto privado',
-          href: '#', linkLabel: en ? 'private project' : 'projeto privado',
-          wire: 'landing',
-          callout: en ? 'hero section' : 'seção hero'
+            ? 'Marketing site for a consultancy, from the Figma layout to the WordPress and Elementor build.'
+            : 'Site institucional para consultoria, do layout no Figma à entrega em WordPress e Elementor.',
+          href: '#',
+          linkLabel: en ? 'private project' : 'projeto privado',
+          wire: 'landing'
         }
       ],
-      bench: [
-        { title: 'ZapFlow', href: '#', desc: en ? 'WhatsApp automation with flows defined in JSON and driven by CLI.' : 'Automação de WhatsApp com fluxos definidos em JSON e controlados por CLI.', stack: 'Cloud API · Node', status: 'dev' },
-        { title: 'ComparaVoo', href: '#', desc: en ? 'Chrome extension that compares domestic flight prices through the Amadeus API. 23 Vitest tests.' : 'Extensão Chrome que compara preços de voos domésticos pela API Amadeus. 23 testes em Vitest.', stack: 'Manifest V3 · Vitest', status: 'dev' },
-        { title: 'venda-jogos-usados', href: 'https://flavioricardo.github.io/venda-jogos-usados', desc: en ? 'Interactive catalog for physical media, with PAC shipping estimates and WhatsApp checkout.' : 'Catálogo interativo de mídia física, com frete PAC e fechamento pelo WhatsApp.', stack: 'ViaCEP API', status: 'live' },
-        { title: 'TubeGen', href: '#', desc: en ? 'Remotion animation MVP: 4 scenes at 60fps in 1080p, design tokens in one place.' : 'MVP de animação em Remotion: 4 cenas a 60fps em 1080p, tokens de design centralizados.', stack: 'Remotion · TS', status: 'proto' },
-        { title: 'todo-app · daily-hero-wod', href: 'https://github.com/flavioricardo', desc: en ? 'Personal apps with due dates and priorities, typed in TypeScript and tested with Vitest.' : 'Apps pessoais com datas e prioridades, tipados em TypeScript e testados com Vitest.', stack: 'Firebase · Vite', status: 'daily' }
-      ],
-      statusLabels: en
-        ? { live: 'live', dev: 'in dev', proto: 'prototype', daily: 'daily use' }
-        : { live: 'no ar', dev: 'em dev', proto: 'protótipo', daily: 'uso diário' },
       facts: [
         { k: en ? 'experience' : 'experiência', v: en ? '10+ years' : '10+ anos' },
-        { k: en ? 'education' : 'formação', v: en ? 'MBA, Frontend & Software Architecture' : 'MBA em Frontend e Arquitetura de Software' },
-        { k: 'base', v: en ? 'Belo Horizonte, remote' : 'Belo Horizonte, remoto' },
-        { k: en ? 'current focus' : 'foco atual', v: en ? 'design systems and AI-powered UI' : 'design systems e UI com IA' }
+        { k: en ? 'education' : 'formação', v: en ? '2 MBAs: Front-End and Software Architecture' : '2 MBAs: Front-End e Arquitetura de Software' },
+        { k: en ? 'scale' : 'escala', v: en ? '70M orders/month at iFood' : '70M pedidos/mês no iFood' },
+        { k: en ? 'specialty' : 'especialidade', v: en ? 'accessibility (WCAG)' : 'acessibilidade (WCAG)' }
       ],
       tools: [
         { label: 'core', items: ['JavaScript', 'TypeScript', 'React', 'Next.js'] },
-        { label: en ? 'state' : 'estado', items: ['Redux', 'Jotai'] },
-        { label: en ? 'styling' : 'estilo', items: ['Tailwind CSS', 'styled-components'] },
+        { label: en ? 'state' : 'estado', items: ['Redux', 'Jotai', 'Context API'] },
+        { label: en ? 'styling' : 'estilo', items: ['Tailwind CSS', 'styled-components', 'Sass'] },
         { label: 'backend / BaaS', items: ['Node.js', 'Express', 'GraphQL', 'Firebase', 'Supabase'] },
-        { label: en ? 'testing' : 'testes', items: ['Jest', 'RTL', 'Cypress', 'Vitest'] },
-        { label: 'design systems', items: ['Storybook', en ? 'design tokens' : 'tokens de design'] },
+        { label: en ? 'testing' : 'testes', items: ['Jest', 'React Testing Library', 'Cypress', 'Vitest'] },
+        { label: 'design systems', items: ['Storybook', en ? 'design tokens' : 'tokens de design', 'WCAG'] },
         { label: 'infra & build', items: ['Docker', 'AWS', 'Azure', 'CI/CD', 'Vite', 'Webpack'] }
       ],
       experience: [
         {
-          company: 'Conductor (via BairesDev)', role: 'Frontend Engineer',
-          period: en ? 'Sep 2025 — now' : 'set 2025 — agora',
+          company: 'Conductor · BairesDev', role: 'Frontend Engineer',
+          period: en ? 'Sep 2025 → now' : 'set 2025 → atual',
           bullets: en
-            ? ['Recommendations Side Panel (AISP), the product recommendations panel.', 'Bricks UI Kit, the company design system: components and Storybook.', 'AI Writing Assistant: the frontend of an AI writing feature.']
-            : ['Recommendations Side Panel (AISP), painel de recomendações do produto.', 'Bricks UI Kit, o design system da empresa: componentes e Storybook.', 'AI Writing Assistant: o frontend de um recurso de escrita com IA.']
+            ? ['Recommendations Side Panel: new recommendation types, priority scoring UI, and filters that react to AISP report context.', 'AI Writing Assistant: frontend integration with OpenAI LLMs and RAG knowledge sources.', 'Bricks UI Kit: accessible, reusable React components shipped to every product team.']
+            : ['Recommendations Side Panel: novos tipos de recomendação, UI de score de prioridade e filtros que reagem ao contexto do relatório AISP.', 'AI Writing Assistant: integração do frontend com LLMs da OpenAI e fontes de conhecimento via RAG.', 'Bricks UI Kit: componentes React acessíveis e reutilizáveis, entregues a todos os times de produto.']
         },
         {
-          company: 'Persistent Systems / Ascensus', role: 'Frontend Engineer', period: '',
+          company: 'Persistent Systems · Ascensus', role: 'Frontend Engineer',
+          period: en ? 'Jun 2025 → Oct 2025' : 'jun 2025 → out 2025',
           bullets: en
-            ? ['Wired the frontend to RAG and OpenAI flows for generative features.']
-            : ['Integração do frontend com fluxos de RAG e OpenAI para recursos generativos.']
+            ? ['Conversational interface for 401(k) retirement plans: chat state, streaming responses, RAG plus OpenAI on the backend.', 'Secure, compliant screens for sensitive financial and personal data.']
+            : ['Interface conversacional para planos de aposentadoria 401(k): estado de chat, respostas em streaming, RAG com OpenAI no backend.', 'Telas seguras e em conformidade para dados financeiros e pessoais sensíveis.']
         },
         {
-          company: 'Magalu (Magazine Luiza)', role: 'Frontend Engineer · e-commerce', period: '',
+          company: 'Luizalabs · Magalu', role: 'Frontend Engineer',
+          period: en ? 'Oct 2024 → Jul 2025' : 'out 2024 → jul 2025',
           bullets: en
-            ? ['Search and product pages on the platform.', 'Built a coupon tag feature that moved the sales needle.', 'Led an accessibility initiative across the platform.']
-            : ['Busca e páginas de produto da plataforma.', 'Tag de cupom que mexeu no ponteiro de vendas.', 'Liderança de uma iniciativa de acessibilidade na plataforma.']
+            ? ['Search, product pages, home and navigation with React, Next.js and Tailwind CSS.', 'Coupon Tag feature: 8% sales increase on tagged products.', 'Led the WCAG accessibility initiative and refactored legacy components into a unified design system.']
+            : ['Busca, página de produto, home e navegação com React, Next.js e Tailwind CSS.', 'Tag de cupom: 8% de aumento de vendas nos produtos marcados.', 'Liderança da iniciativa de acessibilidade WCAG e refatoração de componentes legados em um design system unificado.']
         },
         {
-          company: 'Freelance', role: 'Frontend · WordPress', period: '',
+          company: 'iFood', role: 'Frontend Engineer',
+          period: en ? 'Mar 2022 → Sep 2024' : 'mar 2022 → set 2024',
           bullets: en
-            ? ['Sites and stores for clients in WordPress and Elementor.', 'Current client: Petree Partners, a consultancy in Houston.']
-            : ['Sites e lojas para clientes em WordPress e Elementor.', 'Cliente atual: Petree Partners, consultoria em Houston.']
+            ? ['Order Manager: 1,700+ cities, 43M active users, 70M orders a month.', 'Logistics features that cut order processing time by 15%; promotion tools that lifted campaign sales by 20%.', 'Migrated state management from Redux and Redux-Saga to Jotai.']
+            : ['Order Manager: mais de 1.700 cidades, 43M de usuários ativos, 70M de pedidos por mês.', 'Recursos de logística que reduziram o tempo de processamento de pedidos em 15%; ferramentas promocionais que elevaram as vendas de campanha em 20%.', 'Migração do gerenciamento de estado de Redux e Redux-Saga para Jotai.']
+        },
+        {
+          company: 'BRQ Digital Solutions', role: 'Frontend Engineer',
+          period: en ? 'Jul 2020 → Dec 2021' : 'jul 2020 → dez 2021',
+          bullets: en
+            ? ['Electronic invoice platform in React and TypeScript: processing errors down 30%.', 'Real-time integrations with fiscal systems, in compliance with Brazilian tax rules.']
+            : ['Plataforma de notas fiscais eletrônicas em React e TypeScript: erros de processamento 30% menores.', 'Integrações em tempo real com sistemas fiscais, em conformidade com a legislação brasileira.']
+        },
+        {
+          company: 'AMCom · Educação de SP', role: 'Frontend Engineer',
+          period: en ? 'Nov 2018 → Jul 2020' : 'nov 2018 → jul 2020',
+          bullets: en
+            ? ['Redesigned 10+ systems for the São Paulo Municipal Department of Education: support requests down 40%, over 1 million users.', 'Node.js and MongoDB API to find the nearest school by geolocation.']
+            : ['Redesign de mais de 10 sistemas da Secretaria Municipal de Educação de São Paulo: chamados de suporte 40% menores, mais de 1 milhão de usuários.', 'API em Node.js e MongoDB para encontrar a escola mais próxima por geolocalização.']
+        },
+        {
+          company: 'BRQ · Itaú', role: 'Frontend Engineer',
+          period: en ? 'Dec 2016 → Nov 2018' : 'dez 2016 → nov 2018',
+          bullets: en
+            ? ['Corporate banking features on the Bankline platform, with WCAG compliance and responsive layouts for enterprise users.']
+            : ['Recursos de banking corporativo na plataforma Bankline, com conformidade WCAG e layouts responsivos para usuários empresariais.']
         }
       ],
       contacts: [
         { label: 'e-mail', value: 'flaviobazana@gmail.com', href: 'mailto:flaviobazana@gmail.com' },
         { label: 'linkedin', value: '/in/flavioricardo', href: 'https://linkedin.com/in/flavioricardo' },
-        { label: 'whatsapp', value: en ? 'message me' : 'me chame', href: 'https://wa.me/5500000000000' },
-        { label: en ? 'book a call' : 'agendar call', value: 'cal.com/flavioricardo', href: 'https://cal.com/flavioricardo' }
+        { label: 'whatsapp', value: '+55 11 97729-0572', href: 'https://wa.me/5511977290572' },
+        { label: 'github', value: '/flavioricardo', href: 'https://github.com/flavioricardo' }
       ]
     };
   }
@@ -683,19 +748,61 @@
   function buildWire(kind) {
     var body = el('div', 'frame-body');
     var i;
-    if (kind === 'menu') {
-      var tabs = el('div', 'w-nav');
-      var tabLinks = el('div', 'links');
-      for (i = 0; i < 3; i++) tabLinks.appendChild(el('i'));
-      tabs.appendChild(el('div', 'w-line strong')).style.width = '90px';
-      tabs.appendChild(tabLinks);
-      body.appendChild(tabs);
-      for (i = 0; i < 3; i++) {
+    if (kind === 'board') {
+      var board = el('div', 'w-board');
+      var cols = [2, 3, 2];
+      cols.forEach(function (n, ci) {
+        var col = el('div', 'w-col');
+        col.appendChild(el('div', 'col-h'));
+        for (i = 0; i < n; i++) {
+          col.appendChild(el('div', 'w-ticket' + (ci === 0 && i === 0 ? ' hot' : '')));
+        }
+        board.appendChild(col);
+      });
+      body.appendChild(board);
+    } else if (kind === 'pdp') {
+      var nav = el('div', 'w-nav');
+      nav.appendChild(el('div', 'w-line strong')).style.width = '80px';
+      var links = el('div', 'links');
+      for (i = 0; i < 3; i++) links.appendChild(el('i'));
+      nav.appendChild(links);
+      body.appendChild(nav);
+      var pdp = el('div', 'w-pdp');
+      pdp.appendChild(el('div', 'gallery'));
+      var buy = el('div', 'buy');
+      buy.appendChild(el('span', 'w-tag', 'CUPOM'));
+      var t1 = el('div', 'w-line strong'); t1.style.width = '90%';
+      var t2 = el('div', 'w-line'); t2.style.width = '65%';
+      buy.appendChild(t1); buy.appendChild(t2);
+      buy.appendChild(el('div', 'w-price'));
+      buy.appendChild(el('div', 'w-buy-btn'));
+      pdp.appendChild(buy);
+      body.appendChild(pdp);
+    } else if (kind === 'panel') {
+      var app = el('div', 'w-app');
+      var mainCol = el('div', 'w-main');
+      for (i = 0; i < 5; i++) mainCol.appendChild(el('div', 'row'));
+      app.appendChild(mainCol);
+      var panel = el('div', 'w-panel');
+      [82, 58, 34].forEach(function (pct) {
+        var rec = el('div', 'w-rec');
+        rec.appendChild(el('div', 't'));
+        var score = el('div', 'score');
+        var fill = el('i');
+        fill.style.width = pct + '%';
+        score.appendChild(fill);
+        rec.appendChild(score);
+        panel.appendChild(rec);
+      });
+      app.appendChild(panel);
+      body.appendChild(app);
+    } else if (kind === 'menu') {
+      for (i = 0; i < 2; i++) {
         var item = el('div', 'w-item');
         item.appendChild(el('div', 'thumb'));
         var lines = el('div', 'lines');
-        var l1 = el('div', 'w-line strong'); l1.style.width = '62%';
-        var l2 = el('div', 'w-line'); l2.style.width = '84%';
+        var l1 = el('div', 'w-line strong'); l1.style.width = '60%';
+        var l2 = el('div', 'w-line'); l2.style.width = '85%';
         lines.appendChild(l1); lines.appendChild(l2);
         item.appendChild(lines);
         item.appendChild(el('div', 'price'));
@@ -705,36 +812,22 @@
       cta.appendChild(el('i'));
       body.appendChild(cta);
     } else if (kind === 'calendar') {
-      var head = el('div', 'w-nav');
-      head.appendChild(el('div', 'w-line strong')).style.width = '110px';
-      head.appendChild(el('div', 'w-line')).style.width = '60px';
-      body.appendChild(head);
       var grid = el('div', 'w-week');
       for (i = 0; i < 7; i++) grid.appendChild(el('div', 'day'));
-      var busy = [2, 9, 12, 17, 24];
-      for (i = 0; i < 28; i++) grid.appendChild(el('div', busy.indexOf(i) >= 0 ? 'slot busy' : 'slot'));
+      var busy = [2, 9, 12];
+      for (i = 0; i < 14; i++) grid.appendChild(el('div', busy.indexOf(i) >= 0 ? 'slot busy' : 'slot'));
       body.appendChild(grid);
     } else {
-      var nav = el('div', 'w-nav');
-      nav.appendChild(el('div', 'w-line strong')).style.width = '70px';
-      var links = el('div', 'links');
-      for (i = 0; i < 4; i++) links.appendChild(el('i'));
-      nav.appendChild(links);
-      body.appendChild(nav);
-      var hero = el('div', 'w-hero');
+      var mini = el('div', 'w-hero-mini');
       var copy = el('div', 'copy');
-      var h1 = el('div', 'w-line strong'); h1.style.height = '14px'; h1.style.width = '92%';
-      var h2 = el('div', 'w-line strong'); h2.style.height = '14px'; h2.style.width = '70%';
+      var h1 = el('div', 'w-line strong'); h1.style.width = '92%';
+      var h2 = el('div', 'w-line strong'); h2.style.width = '70%';
       var s1 = el('div', 'w-line'); s1.style.width = '85%';
-      var btn = el('div', 'w-box'); btn.style.cssText = 'width:96px;height:26px;background:var(--redline);opacity:.85;margin-top:6px;';
+      var btn = el('div', 'w-box'); btn.style.cssText = 'width:64px;height:18px;background:var(--redline);opacity:.85;margin-top:4px;';
       copy.appendChild(h1); copy.appendChild(h2); copy.appendChild(s1); copy.appendChild(btn);
-      hero.appendChild(copy);
-      var img = el('div', 'w-box'); img.style.height = '110px';
-      hero.appendChild(img);
-      body.appendChild(hero);
-      var cards = el('div', 'w-cards');
-      for (i = 0; i < 3; i++) cards.appendChild(el('div', 'c'));
-      body.appendChild(cards);
+      mini.appendChild(copy);
+      mini.appendChild(el('div', 'img'));
+      body.appendChild(mini);
     }
     return body;
   }
@@ -751,47 +844,48 @@
       bar.appendChild(el('span', null, p.url));
       frame.appendChild(bar);
       frame.appendChild(buildWire(p.wire));
-      var co = el('span', 'callout ' + (p.wire === 'calendar' ? 'tr' : 'br'), p.callout);
-      frame.appendChild(co);
+      frame.appendChild(el('span', 'callout ' + (p.wire === 'pdp' ? 'tr' : 'br'), p.callout));
       article.appendChild(frame);
 
       var info = el('div', 'project-info');
       info.appendChild(el('h3', null, p.title));
+      info.appendChild(el('div', 'project-role', p.role));
       var chips = el('div', 'project-stack');
       p.stack.forEach(function (s) { chips.appendChild(el('span', 'stack-chip', s)); });
       info.appendChild(chips);
       info.appendChild(el('p', 'project-desc', p.desc));
-      info.appendChild(el('p', 'project-note', p.note));
-      var link = el('a', 'project-link', p.linkLabel + ' ↗');
-      link.href = p.href;
-      if (p.href !== '#') { link.target = '_blank'; link.rel = 'noopener'; }
-      info.appendChild(link);
+      var metrics = el('ul', 'project-metrics');
+      p.metrics.forEach(function (m) { metrics.appendChild(el('li', null, m)); });
+      info.appendChild(metrics);
       article.appendChild(info);
 
       list.appendChild(article);
     });
   }
 
-  function renderBench(d) {
-    var body = document.getElementById('bench-body');
-    body.textContent = '';
-    d.bench.forEach(function (o) {
-      var tr = el('tr');
-      var name = el('td', 'bname');
-      if (o.href !== '#') {
-        var a = el('a', null, o.title);
-        a.href = o.href; a.target = '_blank'; a.rel = 'noopener';
-        name.appendChild(a);
+  function renderProducts(d) {
+    var list = document.getElementById('products-list');
+    list.textContent = '';
+    d.products.forEach(function (p) {
+      var card = el('div', 'pcard');
+      var bar = el('div', 'frame-bar');
+      bar.appendChild(el('span', 'sq'));
+      bar.appendChild(el('span', null, p.url));
+      card.appendChild(bar);
+      card.appendChild(buildWire(p.wire));
+      var info = el('div', 'pcard-info');
+      info.appendChild(el('h3', null, p.title));
+      info.appendChild(el('span', 'pcard-kind', p.kind));
+      info.appendChild(el('p', 'pcard-desc', p.desc));
+      if (p.href !== '#') {
+        var link = el('a', 'pcard-link', p.linkLabel + ' ↗');
+        link.href = p.href; link.target = '_blank'; link.rel = 'noopener';
+        info.appendChild(link);
       } else {
-        name.textContent = o.title;
+        info.appendChild(el('span', 'pcard-link', p.linkLabel));
       }
-      tr.appendChild(name);
-      tr.appendChild(el('td', 'bdesc', o.desc));
-      tr.appendChild(el('td', 'bstack', o.stack));
-      var st = el('td');
-      st.appendChild(el('span', 'status ' + o.status, d.statusLabels[o.status]));
-      tr.appendChild(st);
-      body.appendChild(tr);
+      card.appendChild(info);
+      list.appendChild(card);
     });
   }
 
@@ -874,7 +968,7 @@
     document.getElementById('theme-toggle').textContent = state.theme === 'dark' ? 'LIGHT' : 'DARK';
 
     renderFeatured(d);
-    renderBench(d);
+    renderProducts(d);
     renderFacts(d);
     renderTools(d);
     renderExperience(d);
