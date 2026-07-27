@@ -640,6 +640,16 @@
       ],
       products: [
         {
+          title: 'Movva Mais', url: 'movva-mais.vercel.app',
+          kind: en ? 'SaaS · fitness' : 'SaaS · fitness',
+          desc: en
+            ? 'SaaS for personal trainers and physiotherapists to prescribe and track workout sheets. The pro builds the sheet in a panel; the student opens a public link, with no sign-up or app, and logs the load of every session.'
+            : 'SaaS para personal trainers e fisioterapeutas prescreverem e acompanharem fichas de treino. O profissional monta a ficha no painel; o aluno acessa por link público, sem cadastro nem app, e registra as cargas de cada treino.',
+          href: 'https://movva-mais.vercel.app/',
+          linkLabel: en ? 'visit' : 'visitar',
+          wire: 'workout'
+        },
+        {
           title: 'Cardápio Zap', url: 'cardapio-zap-seven.vercel.app',
           kind: en ? 'SaaS · active billing' : 'SaaS · cobrança ativa',
           desc: en
@@ -843,6 +853,28 @@
       var cta = el('div', 'w-cta');
       cta.appendChild(el('i'));
       body.appendChild(cta);
+    } else if (kind === 'workout') {
+      var head2 = el('div', 'w-nav');
+      head2.appendChild(el('div', 'w-line strong')).style.width = '96px';
+      head2.appendChild(el('div', 'w-line')).style.width = '48px';
+      body.appendChild(head2);
+      [0, 1, 2].forEach(function (r) {
+        var row = el('div');
+        row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);';
+        var name = el('div', 'w-line' + (r === 0 ? ' strong' : ''));
+        name.style.cssText = 'flex:1;max-width:' + (52 - r * 6) + '%;';
+        row.appendChild(name);
+        for (var s = 0; s < 3; s++) {
+          var set = el('span');
+          set.style.cssText = 'width:10px;height:10px;border-radius:2px;background:var(--wire2);flex:none;';
+          row.appendChild(set);
+        }
+        var load = el('span');
+        load.style.cssText = 'width:34px;height:14px;border-radius:3px;flex:none;' +
+          (r === 0 ? 'background:var(--redline);opacity:.85;' : 'border:1px solid var(--line);background:var(--wire);');
+        row.appendChild(load);
+        body.appendChild(row);
+      });
     } else if (kind === 'streak') {
       var counter = el('div');
       counter.style.cssText = 'display:flex;align-items:baseline;gap:8px;margin-bottom:12px;';
