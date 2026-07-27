@@ -306,7 +306,10 @@
     border-radius: 3px; padding: 3px 7px;
   }
   .pcard-desc { font-size: 14px; line-height: 1.5; color: var(--muted); margin: 0; flex: 1; }
-  .pcard-link { font-weight: 600; font-size: 13.5px; border-bottom: 2px solid var(--redline); align-self: flex-start; padding-bottom: 1px; }
+  .pcard-link {
+    font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
+    border-bottom: 2px solid var(--redline); align-self: flex-start; padding-bottom: 2px;
+  }
   .pcard-link:hover { color: var(--redline); }
   .gh-line {
     margin-top: 20px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted);
@@ -461,7 +464,7 @@
     </div>
     <p class="hero-sub" data-t="hero_sub"></p>
     <div class="hero-ctas">
-      <a href="#contact" class="cta-primary"><span data-t="cta_primary"></span> →</a>
+      <a href="#contact" class="cta-primary"><span data-t="cta_primary"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a>
       <a href="#work" class="cta-secondary" data-t="cta_secondary"></a>
     </div>
     <div class="availability"><span class="dot"></span><span data-t="availability"></span></div>
@@ -503,6 +506,7 @@
     <div class="about-copy">
       <p class="lede" data-t="about_1"></p>
       <p class="body" data-t="about_2"></p>
+      <p class="body" data-t="about_3"></p>
     </div>
     <div class="spec-block" id="facts-list"></div>
   </section>
@@ -558,7 +562,8 @@
       sec_exp_id: 'SEC 05', sec_exp: 'Experiência',
       sec_contact_id: 'SEC 06 · aprovação',
       about_1: 'Comecei em 2009 fazendo site em PHP. De lá para cá passei por banco, com o Bankline corporativo do Itaú, pelo setor público, com sistemas da educação de São Paulo usados por mais de um milhão de pessoas, e por dois dos maiores produtos de consumo do Brasil, o iFood e a Magalu. Em produto grande, o frontend carrega dinheiro e reputação: o pedido precisa chegar e o checkout precisa fechar.',
-      about_2: 'Fora do expediente mantenho dois SaaS com clientes reais, o Cardápio Zap e o Agenda Fácil. Eles me dão o outro lado da mesa: precificação, suporte, migração sem downtime. É a experiência de dono que eu levo de volta para o trabalho em time.',
+      about_2: 'Meu terreno é o frontend moderno: React, Next.js e TypeScript no dia a dia, design systems com Storybook e tokens, acessibilidade WCAG, performance em fluxo de alto tráfego e uma suíte de testes que segura deploy com Jest, Testing Library e Cypress.',
+      about_3: 'Nos últimos anos, IA virou parte central do que eu construo. Integrei frontend com OpenAI e RAG no assistente conversacional de aposentadoria da Ascensus e no AI Writing Assistant da Conductor, desenho interfaces para respostas em streaming e score de recomendação, e uso IA no meu próprio fluxo de desenvolvimento todos os dias. Fora do expediente, os SaaS próprios me dão a visão de dono do produto.',
       contact_head: 'Vamos falar do seu produto.',
       contact_sub: 'Consultoria, freelance ou uma vaga: me escreva com o contexto e eu respondo em até um dia útil.',
       footer_note: 'feito à mão em BH: HTML, CSS e JS puros',
@@ -580,7 +585,8 @@
       sec_exp_id: 'SEC 05', sec_exp: 'Experience',
       sec_contact_id: 'SEC 06 · sign-off',
       about_1: "I started in 2009 building PHP websites. Since then I've worked in banking, on Itaú's corporate internet banking, in the public sector, on São Paulo education systems used by over a million people, and on two of Brazil's biggest consumer products, iFood and Magalu. On large products, the frontend carries money and reputation: the order has to arrive and the checkout has to close.",
-      about_2: "After hours I run two SaaS products with real customers, Cardápio Zap and Agenda Fácil. They give me the other side of the table: pricing, support, zero-downtime migrations. That owner's perspective is what I bring back to team work.",
+      about_2: 'My home ground is the modern frontend: React, Next.js and TypeScript every day, design systems with Storybook and tokens, WCAG accessibility, performance on high-traffic flows, and a test suite that holds the deploy line with Jest, Testing Library and Cypress.',
+      about_3: "In recent years, AI became central to what I build. I wired frontends to OpenAI and RAG on Ascensus's conversational retirement assistant and on Conductor's AI Writing Assistant, I design interfaces for streaming responses and recommendation scoring, and I use AI in my own development workflow every day. After hours, my own SaaS products give me the product owner's view.",
       contact_head: "Let's talk about your product.",
       contact_sub: 'Consulting, freelance or a full-time role: write to me with some context and I reply within a business day.',
       footer_note: 'hand-built in BH with plain HTML, CSS and JS',
@@ -659,8 +665,8 @@
           desc: en
             ? 'Marketing site for a consultancy, from the Figma layout to the WordPress and Elementor build.'
             : 'Site institucional para consultoria, do layout no Figma à entrega em WordPress e Elementor.',
-          href: '#',
-          linkLabel: en ? 'private project' : 'projeto privado',
+          href: 'https://petreepartners.com/',
+          linkLabel: en ? 'visit' : 'visitar',
           wire: 'landing'
         }
       ],
@@ -668,7 +674,7 @@
         { k: en ? 'experience' : 'experiência', v: en ? '10+ years' : '10+ anos' },
         { k: en ? 'education' : 'formação', v: en ? '2 MBAs: Front-End and Software Architecture' : '2 MBAs: Front-End e Arquitetura de Software' },
         { k: en ? 'scale' : 'escala', v: en ? '70M orders/month at iFood' : '70M pedidos/mês no iFood' },
-        { k: en ? 'specialty' : 'especialidade', v: en ? 'accessibility (WCAG)' : 'acessibilidade (WCAG)' }
+        { k: en ? 'AI in product' : 'IA em produto', v: en ? 'OpenAI, RAG and AI assistants' : 'OpenAI, RAG e assistentes' }
       ],
       tools: [
         { label: 'core', items: ['JavaScript', 'TypeScript', 'React', 'Next.js'] },
