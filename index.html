@@ -103,9 +103,10 @@
   .hero h1 {
     font-family: "Archivo Black", "Archivo", system-ui, sans-serif;
     font-weight: 900;
-    font-size: clamp(40px, 6.6vw, 88px);
-    line-height: .98; letter-spacing: -.025em;
-    margin: 0; max-width: 15ch; text-wrap: balance;
+    font-size: clamp(34px, 5.6vw, 74px);
+    line-height: 1.02; letter-spacing: -.015em;
+    text-transform: uppercase;
+    margin: 0; max-width: 16ch; text-wrap: balance;
   }
   .redline-dim {
     position: relative; height: 26px; margin: 14px 0 26px; max-width: 560px;
@@ -133,9 +134,12 @@
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--redline); color: var(--redline-ink);
     font-weight: 600; font-size: 15px; padding: 13px 22px; border-radius: 3px;
-    transition: transform .15s ease;
+    transition: background .15s ease, box-shadow .15s ease;
   }
-  .cta-primary:hover { transform: translate(2px, -2px); box-shadow: -2px 2px 0 var(--line); }
+  .cta-primary:hover {
+    background: color-mix(in srgb, var(--redline) 82%, var(--ink));
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--redline) 22%, transparent);
+  }
   .cta-secondary {
     display: inline-flex; align-items: center; gap: 8px;
     color: var(--ink); font-weight: 500; font-size: 15px;
@@ -175,8 +179,9 @@
   }
   .sec-id::after { content: ""; flex: 1; height: 1px; background: var(--line); }
   .sec-title {
-    font-weight: 700; font-size: clamp(26px, 3.4vw, 40px);
-    letter-spacing: -.02em; margin: 0; line-height: 1.05;
+    font-weight: 700; font-size: clamp(23px, 2.9vw, 34px);
+    letter-spacing: -.01em; margin: 0; line-height: 1.08;
+    text-transform: uppercase;
   }
 
   /* ---------- case studies (commercial work) ---------- */
@@ -372,8 +377,9 @@
   .contact { padding: clamp(56px, 10vh, 110px) 0 clamp(44px, 7vh, 80px); }
   .contact h2 {
     font-family: "Archivo Black", "Archivo", system-ui, sans-serif; font-weight: 900;
-    font-size: clamp(32px, 5.2vw, 62px); letter-spacing: -.025em; line-height: 1;
-    margin: 0 0 18px; max-width: 18ch; text-wrap: balance;
+    font-size: clamp(27px, 4.4vw, 52px); letter-spacing: -.015em; line-height: 1.04;
+    text-transform: uppercase;
+    margin: 0 0 18px; max-width: 19ch; text-wrap: balance;
   }
   .contact-sub {
     font-size: clamp(16px, 1.5vw, 18.5px); line-height: 1.6; color: var(--muted);
@@ -451,7 +457,7 @@
     <h1 data-t="hero_head"></h1>
     <div class="redline-dim" aria-hidden="true">
       <span class="dline"></span>
-      <span class="dlabel">clamp(40px, 6.6vw, 88px) · Archivo Black</span>
+      <span class="dlabel">clamp(34px, 5.6vw, 74px) · Archivo Black · uppercase</span>
     </div>
     <p class="hero-sub" data-t="hero_sub"></p>
     <div class="hero-ctas">
@@ -545,7 +551,7 @@
       availability: 'disponível para consultoria e freelance · remoto',
       tokens_label: 'tokens desta página',
       sec_featured_id: 'SEC 01 · produto comercial', sec_featured: 'Trabalho em escala',
-      sec_products_id: 'SEC 02 · SaaS e clientes próprios', sec_products: 'Produtos próprios',
+      sec_products_id: 'SEC 02 · SaaS e projetos para clientes', sec_products: 'Soluções sob medida',
       gh_line: 'Protótipos e experimentos ficam no',
       sec_about_id: 'SEC 03', sec_about: 'Sobre',
       sec_stack_id: 'SEC 04', sec_stack: 'Ferramentas',
@@ -567,7 +573,7 @@
       availability: 'available for consulting and freelance · remote',
       tokens_label: 'tokens of this page',
       sec_featured_id: 'SEC 01 · commercial product', sec_featured: 'Work at scale',
-      sec_products_id: 'SEC 02 · own SaaS and clients', sec_products: 'Own products',
+      sec_products_id: 'SEC 02 · own SaaS and client work', sec_products: 'Custom solutions',
       gh_line: 'Prototypes and experiments live on',
       sec_about_id: 'SEC 03', sec_about: 'About',
       sec_stack_id: 'SEC 04', sec_stack: 'Tools',
