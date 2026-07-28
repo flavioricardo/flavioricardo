@@ -161,28 +161,10 @@
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--redline) 20%, transparent);
   }
 
-  /* ---------- token strip (signature) ---------- */
-  .token-strip {
-    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-    padding: 16px 0; display: flex; flex-wrap: wrap; align-items: center;
-    gap: 14px 26px;
-    font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--muted);
-  }
-  .token-strip .tlabel { text-transform: uppercase; letter-spacing: .07em; color: var(--redline); }
-  .token { display: inline-flex; align-items: center; gap: 7px; }
-  .token .sw { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--line); }
-  .token .tt { font-size: 15px; font-family: "Archivo", sans-serif; font-weight: 700; }
-  .token .tt.m { font-family: "IBM Plex Mono", monospace; font-weight: 500; }
 
   /* ---------- sections ---------- */
   section.block { padding: clamp(44px, 8vh, 88px) 0 0; }
   .sec-head { margin-bottom: 36px; }
-  .sec-id {
-    font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .08em;
-    text-transform: uppercase; color: var(--redline); margin-bottom: 10px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .sec-id::after { content: ""; flex: 1; height: 1px; background: var(--line); }
   .sec-title {
     font-weight: 700; font-size: clamp(23px, 2.9vw, 34px);
     letter-spacing: -.01em; margin: 0; line-height: 1.08;
@@ -476,20 +458,9 @@
     <div class="availability"><span class="dot"></span><span data-t="availability"></span></div>
   </section>
 
-  <div class="token-strip" aria-hidden="true">
-    <span class="tlabel" data-t="tokens_label"></span>
-    <span class="token"><span class="sw" style="background: var(--paper);"></span><span data-tok="--paper"></span></span>
-    <span class="token"><span class="sw" style="background: var(--ink);"></span><span data-tok="--ink"></span></span>
-    <span class="token"><span class="sw" style="background: var(--muted);"></span><span data-tok="--muted"></span></span>
-    <span class="token"><span class="sw" style="background: var(--redline);"></span><span data-tok="--redline"></span></span>
-    <span class="token"><span class="tt">Ag</span> Archivo</span>
-    <span class="token"><span class="tt m">Ag</span> IBM Plex Mono</span>
-    <span class="token">grid 28px</span>
-  </div>
 
   <section id="work" class="block">
     <div class="sec-head">
-      <div class="sec-id"><span data-t="sec_featured_id"></span></div>
       <h2 class="sec-title" data-t="sec_featured"></h2>
     </div>
     <div class="featured-list" id="featured-list"></div>
@@ -497,7 +468,6 @@
 
   <section id="products" class="block">
     <div class="sec-head">
-      <div class="sec-id"><span data-t="sec_products_id"></span></div>
       <h2 class="sec-title" data-t="sec_products"></h2>
     </div>
     <div class="products" id="products-list"></div>
@@ -506,7 +476,6 @@
 
   <section id="about" class="block">
     <div class="sec-head">
-      <div class="sec-id"><span data-t="sec_about_id"></span></div>
       <h2 class="sec-title" data-t="sec_about"></h2>
     </div>
     <div class="about-copy">
@@ -519,7 +488,6 @@
 
   <section class="block">
     <div class="sec-head">
-      <div class="sec-id"><span data-t="sec_stack_id"></span></div>
       <h2 class="sec-title" data-t="sec_stack"></h2>
     </div>
     <div class="tools" id="tools-list"></div>
@@ -527,7 +495,6 @@
 
   <section class="block">
     <div class="sec-head">
-      <div class="sec-id"><span data-t="sec_exp_id"></span></div>
       <h2 class="sec-title" data-t="sec_exp"></h2>
     </div>
     <div class="exp-list" id="exp-list"></div>
@@ -535,7 +502,6 @@
   </section>
 
   <section id="contact" class="contact">
-    <div class="sec-id"><span data-t="sec_contact_id"></span></div>
     <h2 data-t="contact_head"></h2>
     <p class="contact-sub" data-t="contact_sub"></p>
     <div class="signoff" id="contact-grid"></div>
@@ -559,14 +525,13 @@
       hero_sub: 'Sou Flávio Ricardo, engenheiro de frontend com mais de dez anos de estrada. Hoje construo o painel de recomendações e o design system da Conductor. Antes, passei pelo Order Manager do iFood, pela loja da Magalu e pelo internet banking corporativo do Itaú.',
       cta_primary: 'Falar comigo', cta_secondary: 'Ver trabalho',
       availability: 'disponível para consultoria e freelance · remoto',
-      tokens_label: 'tokens desta página',
-      sec_featured_id: 'SEC 01 · produto comercial', sec_featured: 'Trabalho em escala',
-      sec_products_id: 'SEC 02 · produtos próprios e clientes', sec_products: 'Soluções sob medida',
+      sec_featured: 'Trabalho em escala',
+sec_products: 'Soluções sob medida',
       gh_line: 'Protótipos e experimentos ficam no',
-      sec_about_id: 'SEC 03', sec_about: 'Sobre',
-      sec_stack_id: 'SEC 04', sec_stack: 'Ferramentas',
-      sec_exp_id: 'SEC 05', sec_exp: 'Experiência',
-      sec_contact_id: 'SEC 06 · contato',
+sec_about: 'Sobre',
+sec_stack: 'Ferramentas',
+sec_exp: 'Experiência',
+
       about_1: 'Comecei em 2009 fazendo site em PHP. De lá para cá passei por banco, com o Bankline corporativo do Itaú, pelo setor público, com sistemas da educação de São Paulo usados por mais de um milhão de pessoas, e por dois dos maiores produtos de consumo do Brasil, o iFood e a Magalu. Em produto grande, o frontend carrega dinheiro e reputação: o pedido precisa chegar e o checkout precisa fechar.',
       about_2: 'Meu terreno é o frontend moderno: React, Next.js e TypeScript no dia a dia, design systems com Storybook e tokens, acessibilidade WCAG, performance em fluxo de alto tráfego e uma suíte de testes que segura deploy com Jest, Testing Library e Cypress.',
       about_3: 'Nos últimos anos, IA virou parte central do que eu construo. Integrei frontend com OpenAI e RAG no assistente conversacional de aposentadoria da Ascensus e no AI Writing Assistant da Conductor, desenho interfaces para respostas em streaming e score de recomendação, e uso IA no meu próprio fluxo de desenvolvimento todos os dias. Fora do expediente, os produtos próprios me dão a visão de dono.',
@@ -582,14 +547,13 @@
       hero_sub: "I'm Flávio Ricardo, a frontend engineer with over ten years on the road. Today I build the recommendations panel and the design system at Conductor. Before that, I worked on iFood's Order Manager, Magalu's online store, and Itaú's corporate internet banking.",
       cta_primary: 'Talk to me', cta_secondary: 'See work',
       availability: 'available for consulting and freelance · remote',
-      tokens_label: 'tokens of this page',
-      sec_featured_id: 'SEC 01 · commercial product', sec_featured: 'Work at scale',
-      sec_products_id: 'SEC 02 · own products and client work', sec_products: 'Custom solutions',
+      sec_featured: 'Work at scale',
+sec_products: 'Custom solutions',
       gh_line: 'Prototypes and experiments live on',
-      sec_about_id: 'SEC 03', sec_about: 'About',
-      sec_stack_id: 'SEC 04', sec_stack: 'Tools',
-      sec_exp_id: 'SEC 05', sec_exp: 'Experience',
-      sec_contact_id: 'SEC 06 · contact',
+sec_about: 'About',
+sec_stack: 'Tools',
+sec_exp: 'Experience',
+
       about_1: "I started in 2009 building PHP websites. Since then I've worked in banking, on Itaú's corporate internet banking, in the public sector, on São Paulo education systems used by over a million people, and on two of Brazil's biggest consumer products, iFood and Magalu. On large products, the frontend carries money and reputation: the order has to arrive and the checkout has to close.",
       about_2: 'My home ground is the modern frontend: React, Next.js and TypeScript every day, design systems with Storybook and tokens, WCAG accessibility, performance on high-traffic flows, and a test suite that holds the deploy line with Jest, Testing Library and Cypress.',
       about_3: "In recent years, AI became central to what I build. I wired frontends to OpenAI and RAG on Ascensus's conversational retirement assistant and on Conductor's AI Writing Assistant, I design interfaces for streaming responses and recommendation scoring, and I use AI in my own development workflow every day. After hours, my own products give me the owner's view.",
@@ -1063,12 +1027,6 @@
     });
   }
 
-  function updateTokens() {
-    var cs = getComputedStyle(document.documentElement);
-    document.querySelectorAll('[data-tok]').forEach(function (node) {
-      node.textContent = cs.getPropertyValue(node.getAttribute('data-tok')).trim();
-    });
-  }
 
   function render() {
     var t = i18n[state.lang];
@@ -1092,7 +1050,6 @@
     renderTools(d);
     renderExperience(d);
     renderContacts(d);
-    updateTokens();
   }
 
   document.getElementById('theme-toggle').addEventListener('click', function () {
