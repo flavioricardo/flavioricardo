@@ -165,6 +165,12 @@
   /* ---------- sections ---------- */
   section.block { padding: clamp(44px, 8vh, 88px) 0 0; }
   .sec-head { margin-bottom: 36px; }
+  .sec-id {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--redline); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sec-id::after { content: ""; flex: 1; height: 1px; background: var(--line); }
   .sec-title {
     font-weight: 700; font-size: clamp(23px, 2.9vw, 34px);
     letter-spacing: -.01em; margin: 0; line-height: 1.08;
@@ -461,6 +467,7 @@
 
   <section id="work" class="block">
     <div class="sec-head">
+      <div class="sec-id"><span data-t="sec_featured_id"></span></div>
       <h2 class="sec-title" data-t="sec_featured"></h2>
     </div>
     <div class="featured-list" id="featured-list"></div>
@@ -468,6 +475,7 @@
 
   <section id="products" class="block">
     <div class="sec-head">
+      <div class="sec-id"><span data-t="sec_products_id"></span></div>
       <h2 class="sec-title" data-t="sec_products"></h2>
     </div>
     <div class="products" id="products-list"></div>
@@ -502,6 +510,7 @@
   </section>
 
   <section id="contact" class="contact">
+    <div class="sec-id"><span data-t="sec_contact_id"></span></div>
     <h2 data-t="contact_head"></h2>
     <p class="contact-sub" data-t="contact_sub"></p>
     <div class="signoff" id="contact-grid"></div>
@@ -525,10 +534,11 @@
       hero_sub: 'Sou Flávio Ricardo, engenheiro de frontend com mais de dez anos de estrada. Hoje construo o painel de recomendações e o design system da Conductor. Antes, passei pelo Order Manager do iFood, pela loja da Magalu e pelo internet banking corporativo do Itaú.',
       cta_primary: 'Falar comigo', cta_secondary: 'Ver trabalho',
       availability: 'disponível para consultoria e freelance · remoto',
-      sec_featured: 'Trabalho em escala',
-sec_products: 'Soluções sob medida',
+      sec_featured_id: 'produto comercial', sec_featured: 'Trabalho em escala',
+      sec_products_id: 'produtos próprios e clientes', sec_products: 'Soluções sob medida',
+      sec_contact_id: 'contato',
       gh_line: 'Protótipos e experimentos ficam no',
-sec_about: 'Sobre',
+      sec_about: 'Sobre',
 sec_stack: 'Ferramentas',
 sec_exp: 'Experiência',
 
@@ -547,10 +557,11 @@ sec_exp: 'Experiência',
       hero_sub: "I'm Flávio Ricardo, a frontend engineer with over ten years on the road. Today I build the recommendations panel and the design system at Conductor. Before that, I worked on iFood's Order Manager, Magalu's online store, and Itaú's corporate internet banking.",
       cta_primary: 'Talk to me', cta_secondary: 'See work',
       availability: 'available for consulting and freelance · remote',
-      sec_featured: 'Work at scale',
-sec_products: 'Custom solutions',
+      sec_featured_id: 'commercial product', sec_featured: 'Work at scale',
+      sec_products_id: 'own products and client work', sec_products: 'Custom solutions',
+      sec_contact_id: 'contact',
       gh_line: 'Prototypes and experiments live on',
-sec_about: 'About',
+      sec_about: 'About',
 sec_stack: 'Tools',
 sec_exp: 'Experience',
 
