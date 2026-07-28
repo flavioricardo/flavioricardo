@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flávio Meira — Frontend Engineer</title>
 <meta name="description" content="Frontend engineer with 10+ years on products used by millions: iFood, Magalu, Itaú, Conductor. React, Next.js, TypeScript, accessibility.">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Flávio Meira — Frontend Engineer">
 <meta property="og:description" content="10+ anos de frontend em produtos usados por milhões: iFood, Magalu, Itaú, Conductor. React, Next.js, TypeScript. Disponível para consultoria e freelance.">
@@ -373,9 +374,16 @@
     width: 6px; height: 6px; background: var(--redline);
   }
   .exp-earlier {
-    padding: 18px 0; font-family: "IBM Plex Mono", monospace; font-size: 12px;
+    padding: 18px 0 6px; font-family: "IBM Plex Mono", monospace; font-size: 12px;
     color: var(--muted); line-height: 1.6;
   }
+  .exp-links { font-size: 15px; color: var(--muted); line-height: 1.6; margin: 0; }
+  .exp-links a {
+    color: var(--ink); font-weight: 600;
+    border-bottom: 2px solid var(--redline); padding-bottom: 1px;
+    transition: color .15s ease;
+  }
+  .exp-links a:hover { color: var(--redline); }
 
   /* ---------- contact ---------- */
   .contact { padding: clamp(56px, 10vh, 110px) 0 clamp(44px, 7vh, 80px); }
@@ -515,6 +523,7 @@
     </div>
     <div class="exp-list" id="exp-list"></div>
     <p class="exp-earlier" data-t="exp_earlier"></p>
+    <p class="exp-links"><span data-t="exp_links_pre"></span> <a href="https://www.linkedin.com/in/flavioricardo/details/experience/" target="_blank" rel="noopener" data-t="exp_links_li"></a><span data-t="exp_links_mid"></span><a href="https://docs.google.com/document/d/1jrMiyklF3Q1sl_J9a9qMMIJ1F589xDtPAeljDfJQ-Ic/edit?usp=sharing" target="_blank" rel="noopener" data-t="exp_links_cv"></a>.</p>
   </section>
 
   <section id="contact" class="contact">
@@ -557,7 +566,11 @@ sec_exp: 'Experiência',
       contact_head: 'Vamos falar do seu produto.',
       contact_sub: 'Consultoria, freelance ou uma vaga: me escreva com o contexto e eu respondo em até um dia útil.',
       footer_note: 'feito à mão em BH: HTML, CSS e JS puros',
-      exp_earlier: '2009 → 2015 · dev web em PHP e .NET: ERPs para o agro, sistemas para a indústria gráfica e sites corporativos.'
+      exp_earlier: '2009 → 2015 · dev web em PHP e .NET: ERPs para o agro, sistemas para a indústria gráfica e sites corporativos.',
+      exp_links_pre: 'Quer a versão completa? Veja',
+      exp_links_li: 'todas as experiências no LinkedIn ↗',
+      exp_links_mid: ' ou o ',
+      exp_links_cv: 'currículo em PDF ↗'
     },
     en: {
       nav_work: 'Work', nav_products: 'Solutions', nav_about: 'About', nav_contact: 'Contact',
@@ -581,7 +594,11 @@ sec_exp: 'Experience',
       contact_head: "Let's talk about your product.",
       contact_sub: 'Consulting, freelance or a full-time role: write to me with some context and I reply within a business day.',
       footer_note: 'hand-built in BH with plain HTML, CSS and JS',
-      exp_earlier: '2009 → 2015 · web dev in PHP and .NET: agribusiness ERPs, print-industry systems and corporate sites.'
+      exp_earlier: '2009 → 2015 · web dev in PHP and .NET: agribusiness ERPs, print-industry systems and corporate sites.',
+      exp_links_pre: 'Want the full story? See',
+      exp_links_li: 'every role on LinkedIn ↗',
+      exp_links_mid: ' or the ',
+      exp_links_cv: 'resume as a PDF ↗'
     }
   };
 
