@@ -198,6 +198,7 @@
     font-family: "IBM Plex Mono", monospace; font-size: 10.5px; color: var(--muted);
   }
   .frame-bar .sq { width: 8px; height: 8px; border: 1px solid var(--line); border-radius: 2px; flex: none; }
+  .frame-bar .url-blur { filter: blur(4px); user-select: none; pointer-events: none; }
   .frame-body { padding: 18px; min-height: 220px; position: relative; }
 
   /* wireframe atoms */
@@ -307,6 +308,10 @@
     border-bottom: 2px solid var(--redline); align-self: flex-start; padding-bottom: 2px;
   }
   .pcard-link:hover { color: var(--redline); }
+  .pcard-link.soon {
+    color: var(--muted); border-bottom-color: var(--line); cursor: default;
+  }
+  .pcard-link.soon:hover { color: var(--muted); }
   .gh-line {
     margin-top: 20px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted);
   }
@@ -541,6 +546,7 @@
       sec_products_id: 'produtos próprios e clientes', sec_products: 'Soluções sob medida',
       sec_contact_id: 'contato',
       gh_line: 'Protótipos e experimentos ficam no',
+      soon_label: 'em breve',
       sec_about: 'Sobre',
 sec_stack: 'Ferramentas',
 sec_exp: 'Experiência',
@@ -564,6 +570,7 @@ sec_exp: 'Experiência',
       sec_products_id: 'own products and client work', sec_products: 'Custom solutions',
       sec_contact_id: 'contact',
       gh_line: 'Prototypes and experiments live on',
+      soon_label: 'soon',
       sec_about: 'About',
 sec_stack: 'Tools',
 sec_exp: 'Experience',
@@ -637,53 +644,43 @@ sec_exp: 'Experience',
       ],
       products: [
         {
-          title: 'Movva Mais', url: 'movva-mais.vercel.app',
+          title: 'Movva Mais', url: 'movva-mais.app', soon: true,
           kind: en ? 'platform · fitness' : 'plataforma · fitness',
           desc: en
             ? 'Platform for personal trainers and physiotherapists to prescribe and track workout sheets. The pro builds the sheet in a panel; the student opens a public link, with no sign-up or app, and logs the load of every session.'
             : 'Plataforma para personal trainers e fisioterapeutas prescreverem e acompanharem fichas de treino. O profissional monta a ficha no painel; o aluno acessa por link público, sem cadastro nem app, e registra as cargas de cada treino.',
-          href: 'https://movva-mais.vercel.app/',
-          linkLabel: en ? 'visit' : 'visitar',
           wire: 'workout'
         },
         {
-          title: 'Cardápio Zap', url: 'cardapio-zap-seven.vercel.app',
+          title: 'Cardápio Zap', url: 'cardapio-zap.app', soon: true,
           kind: en ? 'product · paying customers' : 'produto · clientes pagantes',
           desc: en
             ? 'Digital menu for restaurants: each house gets its own space and plan, with ordering through WhatsApp.'
             : 'Cardápio digital para restaurantes: cada casa tem seu espaço e seu plano, com pedido pelo WhatsApp.',
-          href: 'https://cardapio-zap-seven.vercel.app',
-          linkLabel: en ? 'visit' : 'visitar',
           wire: 'menu'
         },
         {
-          title: 'Agenda Fácil', url: 'agenda-facil.vercel.app',
+          title: 'Agenda Fácil', url: 'agenda-facil.app', soon: true,
           kind: en ? 'product · in production' : 'produto · em produção',
           desc: en
             ? 'Scheduling for service providers: clients pick their own time slot and the professional follows the whole agenda in one place.'
             : 'Agendamento para prestadores de serviço: o cliente escolhe o horário sozinho e o profissional acompanha a agenda inteira em um só lugar.',
-          href: 'https://agenda-facil.vercel.app',
-          linkLabel: en ? 'visit' : 'visitar',
           wire: 'calendar'
         },
         {
-          title: 'Claru', url: 'claru.app',
+          title: 'Claru', url: 'claru.app', soon: true,
           kind: en ? 'app · well-being' : 'app · bem-estar',
           desc: en
             ? 'App to cut down or quit alcohol: daily check-ins, sobriety counter and an SOS mode. Data stays on the device; analytics only with consent.'
             : 'App para reduzir ou zerar o consumo de álcool: check-in diário, contagem de sobriedade e modo SOS. Dados ficam no aparelho; analytics só com consentimento.',
-          href: 'https://claru.app',
-          linkLabel: en ? 'visit' : 'visitar',
           wire: 'streak'
         },
         {
-          title: 'Trajeto', url: 'trajeto-app-flavioricardo91.vercel.app',
+          title: 'Trajeto', url: 'trajeto.app', soon: true,
           kind: en ? 'app · sports' : 'app · esporte',
           desc: en
             ? 'Turns a run or ride into a transparent PNG overlay for your story: paste a GPX, search a place or pick start and end, customize and download.'
             : 'Transforma treino ou pedal em um overlay PNG transparente para o story: cole um GPX, busque um lugar ou marque início e fim, personalize e baixe.',
-          href: 'https://trajeto-app-flavioricardo91.vercel.app',
-          linkLabel: en ? 'visit' : 'visitar',
           wire: 'route'
         },
         {
@@ -1000,26 +997,28 @@ sec_exp: 'Experience',
     });
   }
 
-  function renderProducts(d) {
+  function renderProducts(d, t) {
     var list = document.getElementById('products-list');
     list.textContent = '';
     d.products.forEach(function (p) {
       var card = el('div', 'pcard');
       var bar = el('div', 'frame-bar');
       bar.appendChild(el('span', 'sq'));
-      bar.appendChild(el('span', null, p.url));
+      var urlSpan = el('span', p.soon ? 'url-blur' : null, p.url);
+      if (p.soon) urlSpan.setAttribute('aria-hidden', 'true');
+      bar.appendChild(urlSpan);
       card.appendChild(bar);
       card.appendChild(buildWire(p.wire));
       var info = el('div', 'pcard-info');
       info.appendChild(el('h3', null, p.title));
       info.appendChild(el('span', 'pcard-kind', p.kind));
       info.appendChild(el('p', 'pcard-desc', p.desc));
-      if (p.href !== '#') {
+      if (p.soon) {
+        info.appendChild(el('span', 'pcard-link soon', t.soon_label));
+      } else {
         var link = el('a', 'pcard-link', p.linkLabel + ' ↗');
         link.href = p.href; link.target = '_blank'; link.rel = 'noopener';
         info.appendChild(link);
-      } else {
-        info.appendChild(el('span', 'pcard-link', p.linkLabel));
       }
       card.appendChild(info);
       list.appendChild(card);
@@ -1101,7 +1100,7 @@ sec_exp: 'Experience',
     document.getElementById('theme-toggle').textContent = state.theme === 'dark' ? 'LIGHT' : 'DARK';
 
     renderFeatured(d);
-    renderProducts(d);
+    renderProducts(d, t);
     renderFacts(d);
     renderTools(d);
     renderExperience(d);
