@@ -606,6 +606,19 @@ sec_exp: 'Experience',
           callout: en ? 'coupon tag' : 'tag de cupom'
         },
         {
+          title: 'Ascensus · 401(k)', url: 'ascensus.com',
+          role: 'Frontend Engineer · Persistent Systems · 2025',
+          stack: ['React', 'OpenAI', 'RAG'],
+          desc: en
+            ? 'A conversational assistant for 401(k) retirement plans: customers ask in plain language and operate their own plan. I built the chat interface with streaming responses, wired to RAG and OpenAI, handling sensitive financial data.'
+            : 'Assistente conversacional para planos de aposentadoria 401(k): o cliente pergunta em linguagem natural e movimenta o próprio plano. Construí a interface de chat com respostas em streaming, conectada a RAG e OpenAI, lidando com dados financeiros sensíveis.',
+          metrics: en
+            ? ['streaming chat UI', 'RAG + OpenAI', 'protected financial data']
+            : ['chat com streaming', 'RAG + OpenAI', 'dados financeiros protegidos'],
+          wire: 'chat',
+          callout: en ? 'streaming response' : 'resposta em streaming'
+        },
+        {
           title: 'Conductor · AISP + Bricks', url: 'conductor.com',
           role: 'Frontend Engineer · BairesDev · 2025 → ' + (en ? 'now' : 'atual'),
           stack: ['React', 'TypeScript', 'Storybook'],
@@ -801,6 +814,35 @@ sec_exp: 'Experience',
       buy.appendChild(el('div', 'w-buy-btn'));
       pdp.appendChild(buy);
       body.appendChild(pdp);
+    } else if (kind === 'chat') {
+      var msgs = [
+        { side: 'l', w: 62 }, { side: 'r', w: 40 }, { side: 'l', w: 74 }
+      ];
+      msgs.forEach(function (m, mi) {
+        var row = el('div');
+        row.style.cssText = 'display:flex;margin-bottom:8px;justify-content:' + (m.side === 'l' ? 'flex-start' : 'flex-end') + ';';
+        var bubble = el('div');
+        var last = mi === msgs.length - 1;
+        bubble.style.cssText = 'width:' + m.w + '%;border-radius:6px;padding:7px 9px;display:flex;flex-direction:column;gap:5px;' +
+          (m.side === 'l' ? 'background:var(--paper);border:1px solid ' + (last ? 'var(--redline)' : 'var(--line)') + ';' : 'background:var(--wire2);');
+        var l1 = el('div', 'w-line'); l1.style.cssText = 'width:90%;height:6px;';
+        bubble.appendChild(l1);
+        if (m.side === 'l') {
+          var l2 = el('div', 'w-line'); l2.style.cssText = 'width:' + (last ? 45 : 70) + '%;height:6px;' + (last ? 'background:var(--redline);opacity:.6;' : '');
+          bubble.appendChild(l2);
+        }
+        row.appendChild(bubble);
+        body.appendChild(row);
+      });
+      var input = el('div');
+      input.style.cssText = 'display:flex;gap:8px;margin-top:12px;';
+      var field = el('div');
+      field.style.cssText = 'flex:1;height:26px;border:1px solid var(--line);border-radius:4px;background:var(--card);';
+      input.appendChild(field);
+      var send = el('div');
+      send.style.cssText = 'width:40px;height:26px;border-radius:4px;background:var(--redline);opacity:.85;';
+      input.appendChild(send);
+      body.appendChild(input);
     } else if (kind === 'panel') {
       var app = el('div', 'w-app');
       var mainCol = el('div', 'w-main');
