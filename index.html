@@ -89,7 +89,8 @@
   nav.site { display: flex; align-items: center; gap: clamp(8px, 2vw, 22px); }
   .navlink { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .15s ease; }
   .navlink:hover { color: var(--ink); }
-  @media (max-width: 560px) { .navlink--work { display: none; } }
+  @media (max-width: 680px) { .navlink--work { display: none; } }
+  @media (max-width: 560px) { .navlink--about { display: none; } }
   .pill-btn {
     font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .05em;
     background: transparent; color: var(--ink); border: 1px solid var(--line);
@@ -456,7 +457,8 @@
   <nav class="site">
     <a href="#work" class="navlink navlink--work" data-t="nav_work"></a>
     <a href="#products" class="navlink" data-t="nav_products"></a>
-    <a href="#about" class="navlink" data-t="nav_about"></a>
+    <a href="#about" class="navlink navlink--about" data-t="nav_about"></a>
+    <a href="#experience" class="navlink" data-t="nav_exp"></a>
     <a href="#contact" class="navlink" data-t="nav_contact"></a>
     <button id="lang-toggle" class="pill-btn" type="button"></button>
     <button id="theme-toggle" class="pill-btn" type="button" aria-label="theme"></button>
@@ -517,7 +519,7 @@
     <div class="tools" id="tools-list"></div>
   </section>
 
-  <section class="block">
+  <section id="experience" class="block">
     <div class="sec-head">
       <h2 class="sec-title" data-t="sec_exp"></h2>
     </div>
@@ -545,7 +547,7 @@
 
   var i18n = {
     pt: {
-      nav_work: 'Trabalho', nav_products: 'Soluções', nav_about: 'Sobre', nav_contact: 'Contato',
+      nav_work: 'Trabalho', nav_products: 'Soluções', nav_about: 'Sobre', nav_exp: 'Experiência', nav_contact: 'Contato',
       eyebrow: 'Engenharia de frontend · React · Next.js · TypeScript',
       hero_head: 'Frontend para produtos usados por milhões.',
       hero_sub: 'Sou Flávio Meira, engenheiro de frontend com mais de dez anos de estrada. Hoje construo o painel de recomendações e o design system da Conductor. Antes, passei pelo Order Manager do iFood, pela loja da Magalu e pelo internet banking corporativo do Itaú.',
@@ -573,7 +575,7 @@ sec_exp: 'Experiência',
       exp_links_cv: 'currículo em PDF ↗'
     },
     en: {
-      nav_work: 'Work', nav_products: 'Solutions', nav_about: 'About', nav_contact: 'Contact',
+      nav_work: 'Work', nav_products: 'Solutions', nav_about: 'About', nav_exp: 'Experience', nav_contact: 'Contact',
       eyebrow: 'Frontend engineering · React · Next.js · TypeScript',
       hero_head: 'Frontend for products used by millions.',
       hero_sub: "I'm Flávio Meira, a frontend engineer with over ten years on the road. Today I build the recommendations panel and the design system at Conductor. Before that, I worked on iFood's Order Manager, Magalu's online store, and Itaú's corporate internet banking.",
