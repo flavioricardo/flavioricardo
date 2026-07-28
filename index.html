@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flávio Ricardo — Frontend Engineer</title>
 <meta name="description" content="Frontend engineer with 10+ years on products used by millions: iFood, Magalu, Itaú, Conductor. React, Next.js, TypeScript, accessibility.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Flávio Ricardo — Frontend Engineer">
+<meta property="og:description" content="10+ anos de frontend em produtos usados por milhões: iFood, Magalu, Itaú, Conductor. React, Next.js, TypeScript. Disponível para consultoria e freelance.">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -84,6 +88,7 @@
   nav.site { display: flex; align-items: center; gap: clamp(8px, 2vw, 22px); }
   .navlink { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .15s ease; }
   .navlink:hover { color: var(--ink); }
+  @media (max-width: 560px) { .navlink--work { display: none; } }
   .pill-btn {
     font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .05em;
     background: transparent; color: var(--ink); border: 1px solid var(--line);
@@ -445,7 +450,8 @@
     <span class="brand-rev">FR · REV 2026</span>
   </a>
   <nav class="site">
-    <a href="#work" class="navlink" data-t="nav_work"></a>
+    <a href="#work" class="navlink navlink--work" data-t="nav_work"></a>
+    <a href="#products" class="navlink" data-t="nav_products"></a>
     <a href="#about" class="navlink" data-t="nav_about"></a>
     <a href="#contact" class="navlink" data-t="nav_contact"></a>
     <button id="lang-toggle" class="pill-btn" type="button"></button>
@@ -489,7 +495,7 @@
     <div class="featured-list" id="featured-list"></div>
   </section>
 
-  <section class="block">
+  <section id="products" class="block">
     <div class="sec-head">
       <div class="sec-id"><span data-t="sec_products_id"></span></div>
       <h2 class="sec-title" data-t="sec_products"></h2>
@@ -547,7 +553,7 @@
 
   var i18n = {
     pt: {
-      nav_work: 'Trabalho', nav_about: 'Sobre', nav_contact: 'Contato',
+      nav_work: 'Trabalho', nav_products: 'Soluções', nav_about: 'Sobre', nav_contact: 'Contato',
       eyebrow: 'Engenharia de frontend · React · Next.js · TypeScript',
       hero_head: 'Frontend para produtos usados por milhões.',
       hero_sub: 'Sou Flávio Ricardo, engenheiro de frontend com mais de dez anos de estrada. Hoje construo o painel de recomendações e o design system da Conductor. Antes, passei pelo Order Manager do iFood, pela loja da Magalu e pelo internet banking corporativo do Itaú.',
@@ -560,7 +566,7 @@
       sec_about_id: 'SEC 03', sec_about: 'Sobre',
       sec_stack_id: 'SEC 04', sec_stack: 'Ferramentas',
       sec_exp_id: 'SEC 05', sec_exp: 'Experiência',
-      sec_contact_id: 'SEC 06 · aprovação',
+      sec_contact_id: 'SEC 06 · contato',
       about_1: 'Comecei em 2009 fazendo site em PHP. De lá para cá passei por banco, com o Bankline corporativo do Itaú, pelo setor público, com sistemas da educação de São Paulo usados por mais de um milhão de pessoas, e por dois dos maiores produtos de consumo do Brasil, o iFood e a Magalu. Em produto grande, o frontend carrega dinheiro e reputação: o pedido precisa chegar e o checkout precisa fechar.',
       about_2: 'Meu terreno é o frontend moderno: React, Next.js e TypeScript no dia a dia, design systems com Storybook e tokens, acessibilidade WCAG, performance em fluxo de alto tráfego e uma suíte de testes que segura deploy com Jest, Testing Library e Cypress.',
       about_3: 'Nos últimos anos, IA virou parte central do que eu construo. Integrei frontend com OpenAI e RAG no assistente conversacional de aposentadoria da Ascensus e no AI Writing Assistant da Conductor, desenho interfaces para respostas em streaming e score de recomendação, e uso IA no meu próprio fluxo de desenvolvimento todos os dias. Fora do expediente, os produtos próprios me dão a visão de dono.',
@@ -570,7 +576,7 @@
       exp_earlier: '2009 → 2015 · dev web em PHP e .NET: ERPs para o agro, sistemas para a indústria gráfica e sites corporativos.'
     },
     en: {
-      nav_work: 'Work', nav_about: 'About', nav_contact: 'Contact',
+      nav_work: 'Work', nav_products: 'Solutions', nav_about: 'About', nav_contact: 'Contact',
       eyebrow: 'Frontend engineering · React · Next.js · TypeScript',
       hero_head: 'Frontend for products used by millions.',
       hero_sub: "I'm Flávio Ricardo, a frontend engineer with over ten years on the road. Today I build the recommendations panel and the design system at Conductor. Before that, I worked on iFood's Order Manager, Magalu's online store, and Itaú's corporate internet banking.",
@@ -583,7 +589,7 @@
       sec_about_id: 'SEC 03', sec_about: 'About',
       sec_stack_id: 'SEC 04', sec_stack: 'Tools',
       sec_exp_id: 'SEC 05', sec_exp: 'Experience',
-      sec_contact_id: 'SEC 06 · sign-off',
+      sec_contact_id: 'SEC 06 · contact',
       about_1: "I started in 2009 building PHP websites. Since then I've worked in banking, on Itaú's corporate internet banking, in the public sector, on São Paulo education systems used by over a million people, and on two of Brazil's biggest consumer products, iFood and Magalu. On large products, the frontend carries money and reputation: the order has to arrive and the checkout has to close.",
       about_2: 'My home ground is the modern frontend: React, Next.js and TypeScript every day, design systems with Storybook and tokens, WCAG accessibility, performance on high-traffic flows, and a test suite that holds the deploy line with Jest, Testing Library and Cypress.',
       about_3: "In recent years, AI became central to what I build. I wired frontends to OpenAI and RAG on Ascensus's conversational retirement assistant and on Conductor's AI Writing Assistant, I design interfaces for streaming responses and recommendation scoring, and I use AI in my own development workflow every day. After hours, my own products give me the owner's view.",
@@ -651,7 +657,7 @@
         },
         {
           title: 'Cardápio Zap', url: 'cardapio-zap-seven.vercel.app',
-          kind: en ? 'product · active billing' : 'produto · cobrança ativa',
+          kind: en ? 'product · paying customers' : 'produto · clientes pagantes',
           desc: en
             ? 'Digital menu for restaurants: each house gets its own space and plan, with ordering through WhatsApp.'
             : 'Cardápio digital para restaurantes: cada casa tem seu espaço e seu plano, com pedido pelo WhatsApp.',
@@ -663,8 +669,8 @@
           title: 'Agenda Fácil', url: 'agenda-facil.vercel.app',
           kind: en ? 'product · in production' : 'produto · em produção',
           desc: en
-            ? 'Scheduling for service providers. Business rules live in the database: Supabase triggers and RPC.'
-            : 'Agendamento para prestadores de serviço. Regra de negócio no banco: triggers e RPC no Supabase.',
+            ? 'Scheduling for service providers: clients pick their own time slot and the professional follows the whole agenda in one place.'
+            : 'Agendamento para prestadores de serviço: o cliente escolhe o horário sozinho e o profissional acompanha a agenda inteira em um só lugar.',
           href: 'https://agenda-facil.vercel.app',
           linkLabel: en ? 'visit' : 'visitar',
           wire: 'calendar'
@@ -767,9 +773,9 @@
         }
       ],
       contacts: [
+        { label: 'whatsapp', value: '+55 11 97729-0572', href: 'https://wa.me/5511977290572' },
         { label: 'e-mail', value: 'flaviobazana@gmail.com', href: 'mailto:flaviobazana@gmail.com' },
         { label: 'linkedin', value: '/in/flavioricardo', href: 'https://linkedin.com/in/flavioricardo' },
-        { label: 'whatsapp', value: '+55 11 97729-0572', href: 'https://wa.me/5511977290572' },
         { label: 'github', value: '/flavioricardo', href: 'https://github.com/flavioricardo' }
       ]
     };
@@ -1075,7 +1081,9 @@
       node.textContent = t[node.getAttribute('data-t')];
     });
 
-    document.getElementById('lang-toggle').textContent = state.lang === 'pt' ? 'PT/EN' : 'EN/PT';
+    var langBtn = document.getElementById('lang-toggle');
+    langBtn.textContent = state.lang === 'pt' ? 'EN' : 'PT';
+    langBtn.setAttribute('aria-label', state.lang === 'pt' ? 'Switch to English' : 'Mudar para português');
     document.getElementById('theme-toggle').textContent = state.theme === 'dark' ? 'LIGHT' : 'DARK';
 
     renderFeatured(d);
