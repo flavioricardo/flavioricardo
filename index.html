@@ -438,17 +438,6 @@
   footer.site a:hover { color: var(--redline); }
 
   /* ---------- motion ---------- */
-  @media (prefers-reduced-motion: no-preference) {
-    @keyframes riseIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-    @keyframes drawIn { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .hero .eyebrow { animation: riseIn .5s ease both; }
-    .hero h1 { animation: riseIn .5s .08s ease both; }
-    .redline-dim .dline { animation: drawIn .6s .5s ease both; }
-    .redline-dim .dlabel { animation: fadeIn .4s .95s ease both; }
-    .hero-sub { animation: riseIn .5s .16s ease both; }
-    .hero-ctas, .availability { animation: riseIn .5s .24s ease both; }
-  }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
@@ -548,6 +537,8 @@
   <a href="https://github.com/flavioricardo" target="_blank" rel="noopener">github.com/flavioricardo ↗</a>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script>
 (function () {
   'use strict';
@@ -849,7 +840,7 @@ sec_exp: 'Experience',
         { side: 'l', w: 62 }, { side: 'r', w: 40 }, { side: 'l', w: 74 }
       ];
       msgs.forEach(function (m, mi) {
-        var row = el('div');
+        var row = el('div', 'w-msg');
         row.style.cssText = 'display:flex;margin-bottom:8px;justify-content:' + (m.side === 'l' ? 'flex-start' : 'flex-end') + ';';
         var bubble = el('div');
         var last = mi === msgs.length - 1;
@@ -864,7 +855,7 @@ sec_exp: 'Experience',
         row.appendChild(bubble);
         body.appendChild(row);
       });
-      var input = el('div');
+      var input = el('div', 'w-input');
       input.style.cssText = 'display:flex;gap:8px;margin-top:12px;';
       var field = el('div');
       field.style.cssText = 'flex:1;height:26px;border:1px solid var(--line);border-radius:4px;background:var(--card);';
@@ -912,7 +903,7 @@ sec_exp: 'Experience',
       head2.appendChild(el('div', 'w-line')).style.width = '48px';
       body.appendChild(head2);
       [0, 1, 2].forEach(function (r) {
-        var row = el('div');
+        var row = el('div', 'w-wrow');
         row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);';
         var name = el('div', 'w-line' + (r === 0 ? ' strong' : ''));
         name.style.cssText = 'flex:1;max-width:' + (52 - r * 6) + '%;';
@@ -929,7 +920,7 @@ sec_exp: 'Experience',
         body.appendChild(row);
       });
     } else if (kind === 'streak') {
-      var counter = el('div');
+      var counter = el('div', 'w-counter');
       counter.style.cssText = 'display:flex;align-items:baseline;gap:8px;margin-bottom:12px;';
       var num = el('div', 'w-box');
       num.style.cssText = 'width:54px;height:30px;background:var(--wire2);border-radius:4px;';
@@ -937,7 +928,7 @@ sec_exp: 'Experience',
       var lbl = el('div', 'w-line'); lbl.style.width = '70px';
       counter.appendChild(lbl);
       body.appendChild(counter);
-      var dots = el('div');
+      var dots = el('div', 'w-dots');
       dots.style.cssText = 'display:flex;gap:6px;margin-bottom:14px;';
       for (i = 0; i < 7; i++) {
         var dot = el('span');
@@ -950,7 +941,7 @@ sec_exp: 'Experience',
       sos.appendChild(el('i'));
       body.appendChild(sos);
     } else if (kind === 'route') {
-      var wrap = el('div');
+      var wrap = el('div', 'w-route');
       wrap.style.cssText = 'position:relative;height:96px;margin-bottom:10px;';
       var svgNS = 'http://www.w3.org/2000/svg';
       var svg = document.createElementNS(svgNS, 'svg');
@@ -967,7 +958,7 @@ sec_exp: 'Experience',
       svg.appendChild(path);
       wrap.appendChild(svg);
       body.appendChild(wrap);
-      var stats = el('div');
+      var stats = el('div', 'w-stats');
       stats.style.cssText = 'display:flex;gap:10px;';
       [46, 34, 40].forEach(function (w) {
         var s = el('div', 'w-line strong');
@@ -1137,19 +1128,66 @@ sec_exp: 'Experience',
     renderContacts(d);
   }
 
+  /* ---------- motion (GSAP, progressive enhancement) ---------- */
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+  if (hasGsap) gsap.registerPlugin(ScrollTrigger);
+
+  function animateHero() {
+    if (!hasGsap || reduceMotion) return;
+    gsap.timeline({ defaults: { ease: 'power2.out', duration: 0.5 } })
+      .from('.eyebrow', { y: 14, autoAlpha: 0 })
+      .from('.hero h1', { y: 16, autoAlpha: 0 }, '-=0.3')
+      .from('.redline-dim .dline', { scaleX: 0, duration: 0.6, ease: 'power2.inOut' }, '-=0.15')
+      .from('.redline-dim .dlabel', { autoAlpha: 0, duration: 0.35 }, '-=0.15')
+      .from('.hero-sub', { y: 14, autoAlpha: 0 }, '-=0.2')
+      .from('.hero-ctas', { y: 12, autoAlpha: 0 }, '-=0.25')
+      .from('.availability', { y: 12, autoAlpha: 0 }, '-=0.3');
+  }
+
+  var FRAME_ATOMS = '.w-nav, .w-col, .w-item, .w-rec, .w-main .row, .w-week .day, ' +
+    '.w-week .slot, .w-pdp .gallery, .w-pdp .buy > *, .w-hero-mini > *, .w-cta, ' +
+    '.w-cards .c, .w-wrow, .w-msg, .w-input, .w-counter, .w-dots, .w-route, .w-stats';
+
+  function animateFrames() {
+    if (!hasGsap || reduceMotion) return;
+    ScrollTrigger.getAll().forEach(function (t) { t.kill(); });
+    document.querySelectorAll('.project-frame, .pcard').forEach(function (frame) {
+      var atoms = frame.querySelectorAll(FRAME_ATOMS);
+      if (!atoms.length) return;
+      var tl = gsap.timeline({
+        scrollTrigger: { trigger: frame, start: 'top 85%', once: true }
+      });
+      tl.from(atoms, { autoAlpha: 0, y: 8, duration: 0.35, stagger: 0.05, ease: 'power1.out' });
+      var fills = frame.querySelectorAll('.w-rec .score i');
+      if (fills.length) {
+        tl.from(fills, { scaleX: 0, transformOrigin: 'left center', duration: 0.5, ease: 'power2.out' }, '-=0.1');
+      }
+      var callout = frame.querySelector('.callout');
+      if (callout) {
+        tl.from(callout, { autoAlpha: 0, scale: 0.7, duration: 0.35, ease: 'back.out(1.8)' }, '-=0.1');
+      }
+    });
+    ScrollTrigger.refresh();
+  }
+
   document.getElementById('theme-toggle').addEventListener('click', function () {
     state.theme = state.theme === 'dark' ? 'light' : 'dark';
     localStorage.setItem('theme', state.theme);
     render();
+    animateFrames();
   });
 
   document.getElementById('lang-toggle').addEventListener('click', function () {
     state.lang = state.lang === 'pt' ? 'en' : 'pt';
     localStorage.setItem('lang', state.lang);
     render();
+    animateFrames();
   });
 
   render();
+  animateHero();
+  animateFrames();
 })();
 </script>
 </body>
