@@ -1,7 +1,7 @@
 # STATE — Portfólio (flavioricardo/flavioricardo)
 
 **Última sessão:** 2026-07-30 (sessão 1)
-**No ar:** https://flavioricardo.github.io/flavioricardo/
+**No ar:** https://fmeira.dev/ — domínio próprio, configurado em Settings → Pages (sem arquivo CNAME no repo, que é o caminho correto para deploy via GitHub Actions). É esta a URL de referência para revisar qualquer mudança.
 
 ## Estado atual
 
@@ -19,7 +19,8 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 - **Identidade "folha de especificação":** grid de papel milimetrado, Archivo Black no display, IBM Plex Mono nas anotações, acento redline `#c03d17` / `#f0603c`. Cada produto é ilustrado por um wireframe desenhado em DOM (não imagem) da sua UI real.
 - **GSAP degrada em silêncio:** se o CDN falhar ou o usuário pedir `prefers-reduced-motion`, a página renderiza estática e completa. Os ScrollTriggers são recriados a cada troca de tema/idioma porque o render reconstrói o DOM.
 - **Produtos não lançados** aparecem com o domínio futuro borrado (`filter: blur`, `aria-hidden`) e o link desabilitado como SOON/EM BREVE.
-- **Fontes pelo Google Fonts** (único recurso render-blocking); a build do artifact de pré-visualização embute fontes e GSAP porque o CSP de artifacts bloqueia CDNs.
+- **Fontes pelo Google Fonts** (único recurso render-blocking).
+- **Sem artifact de pré-visualização.** A revisão de qualquer mudança acontece no site publicado (https://fmeira.dev/) depois do merge; o artifact que existiu durante a construção foi descontinuado a pedido do Flávio em 2026-07-30.
 
 ## Pendências
 
