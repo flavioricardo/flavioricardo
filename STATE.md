@@ -23,9 +23,9 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 
 ## Pendências
 
-- [ ] **Abrir https://movvamais.app/ no navegador e confirmar que carrega com HTTPS válido** — o card do Movva Mais já linka para lá, mas a rede do sandbox bloqueia o domínio e a verificação nunca aconteceu. | Bloqueia: se o domínio não estiver servindo, o portfólio tem um link quebrado no ar agora. | Aberta desde: 2026-07-30 (sessão 1)
 - [ ] **Informar as URLs de Agenda Fácil e Trajeto quando lançarem** — hoje os dois cards estão em SOON com domínio borrado; a troca é de 2 linhas por produto. | Bloqueia: 2 dos 6 produtos não podem ser visitados por quem lê o site. | Aberta desde: 2026-07-30 (sessão 1)
-- [ ] **Apontar o domínio claru.app para o app** (hoje o card usa `flavioricardo.github.io/claru`) — DNS no registrador + Pages Settings → Custom domain do repo `flavioricardo/claru`. | Bloqueia: consistência de marca; é o único produto lançado sem domínio próprio. | Aberta desde: 2026-07-30 (sessão 1)
+- [x] ~~**Abrir https://movvamais.app/ no navegador e confirmar que carrega com HTTPS válido**~~ — confirmado pelo Flávio: o domínio está correto e no ar. | Resolvida em: 2026-07-30 (sessão 1)
+- [x] ~~**Apontar o domínio claru.app para o app**~~ — decisão do Flávio: `flavioricardo.github.io/claru` é a URL correta do Claru; não haverá troca de domínio. | Resolvida em: 2026-07-30 (sessão 1)
 
 ## Próximos passos (opcionais, não bloqueiam)
 

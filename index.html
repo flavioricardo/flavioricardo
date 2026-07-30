@@ -430,6 +430,8 @@
     .signoff a { border-top: none; }
     .signoff a:nth-child(n+3) { border-top: 1px solid var(--line); }
     .signoff a:nth-child(even) { border-left: 1px solid var(--line); }
+    /* odd count: the last card spans the full row instead of leaving a hole */
+    .signoff a:last-child:nth-child(odd) { grid-column: 1 / -1; }
   }
   .signoff a:hover { background: var(--paper2); }
   .signoff .k {
@@ -800,6 +802,7 @@ sec_exp: 'Experience',
       ],
       contacts: [
         { label: 'whatsapp', value: '+55 11 97729-0572', href: 'https://wa.me/5511977290572' },
+        { label: en ? 'book a call' : 'agendar call', value: 'calendly.com/flavioricardo', href: 'https://calendly.com/flavioricardo/meeting' },
         { label: 'e-mail', value: 'flaviobazana@gmail.com', href: 'mailto:flaviobazana@gmail.com' },
         { label: 'linkedin', value: '/in/flavioricardo', href: 'https://linkedin.com/in/flavioricardo' },
         { label: 'github', value: '/flavioricardo', href: 'https://github.com/flavioricardo' }
