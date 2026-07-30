@@ -10,9 +10,11 @@
 <meta property="og:title" content="Flávio Meira — Frontend Engineer">
 <meta property="og:description" content="10+ anos de frontend em produtos usados por milhões: iFood, Magalu, Itaú, Conductor. React, Next.js, TypeScript. Disponível para consultoria e freelance.">
 <meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#f5f6f4">
+<script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 76px; }
@@ -69,6 +71,14 @@
     outline-offset: 2px;
   }
 
+  .skip-link {
+    position: absolute; left: -9999px;
+    background: var(--redline); color: var(--redline-ink);
+    font-weight: 700; font-size: 13.5px; text-transform: uppercase; letter-spacing: .04em;
+    padding: 12px 18px; border-radius: 3px;
+  }
+  .skip-link:focus { position: fixed; top: 12px; left: 12px; z-index: 100; }
+
   /* ---------- header ---------- */
   header.site {
     position: sticky; top: 0; z-index: 50;
@@ -87,7 +97,7 @@
     padding: 3px 6px; white-space: nowrap;
   }
   nav.site { display: flex; align-items: center; gap: clamp(8px, 2vw, 22px); }
-  .navlink { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .15s ease; }
+  .navlink { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .15s ease; padding: 8px 2px; }
   .navlink:hover { color: var(--ink); }
   @media (max-width: 640px) {
     html { scroll-padding-top: 118px; }
@@ -445,6 +455,8 @@
 </head>
 <body>
 
+<a href="#top" class="skip-link" data-t="skip"></a>
+
 <header class="site">
   <a href="#top" class="brand">
     <span class="brand-name">Flávio Meira</span>
@@ -546,6 +558,7 @@
 
   var i18n = {
     pt: {
+      skip: 'Pular para o conteúdo',
       nav_work: 'Trabalho', nav_products: 'Soluções', nav_about: 'Sobre', nav_exp: 'Experiência', nav_contact: 'Contato',
       eyebrow: 'Engenharia de frontend · React · Next.js · TypeScript',
       hero_head: 'Frontend para produtos usados por milhões.',
@@ -574,6 +587,7 @@ sec_exp: 'Experiência',
       exp_links_cv: 'currículo em PDF ↗'
     },
     en: {
+      skip: 'Skip to content',
       nav_work: 'Work', nav_products: 'Solutions', nav_about: 'About', nav_exp: 'Experience', nav_contact: 'Contact',
       eyebrow: 'Frontend engineering · React · Next.js · TypeScript',
       hero_head: 'Frontend for products used by millions.',
@@ -807,6 +821,7 @@ sec_exp: 'Experience',
 
   function buildWire(kind) {
     var body = el('div', 'frame-body');
+    body.setAttribute('aria-hidden', 'true');
     var i;
     if (kind === 'board') {
       var board = el('div', 'w-board');
@@ -1002,7 +1017,9 @@ sec_exp: 'Experience',
       bar.appendChild(el('span', null, p.url));
       frame.appendChild(bar);
       frame.appendChild(buildWire(p.wire));
-      frame.appendChild(el('span', 'callout ' + (p.wire === 'pdp' ? 'tr' : 'br'), p.callout));
+      var co = el('span', 'callout ' + (p.wire === 'pdp' ? 'tr' : 'br'), p.callout);
+      co.setAttribute('aria-hidden', 'true');
+      frame.appendChild(co);
       article.appendChild(frame);
 
       var info = el('div', 'project-info');
@@ -1121,7 +1138,13 @@ sec_exp: 'Experience',
     var langBtn = document.getElementById('lang-toggle');
     langBtn.textContent = state.lang === 'pt' ? 'EN' : 'PT';
     langBtn.setAttribute('aria-label', state.lang === 'pt' ? 'Switch to English' : 'Mudar para português');
-    document.getElementById('theme-toggle').textContent = state.theme === 'dark' ? 'LIGHT' : 'DARK';
+    var themeBtn = document.getElementById('theme-toggle');
+    themeBtn.textContent = state.theme === 'dark' ? 'LIGHT' : 'DARK';
+    themeBtn.setAttribute('aria-label', state.lang === 'pt'
+      ? (state.theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro')
+      : (state.theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'));
+    document.querySelector('nav.site').setAttribute('aria-label', state.lang === 'pt' ? 'Principal' : 'Primary');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', state.theme === 'dark' ? '#16181a' : '#f5f6f4');
 
     renderFeatured(d);
     renderProducts(d, t);
