@@ -33,7 +33,6 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 - **Conteúdo estático no HTML** — hoje todo texto vem do JS; sem JavaScript a página é um esqueleto. Servir o EN estático e deixar o JS só trocar idioma é o refactor de resiliência que ficou de fora da auditoria.
 - **`og:image`** — o preview de link mostra título e descrição, mas sem imagem.
 - **Depoimento de cliente ou colega** (uma frase, nome e cargo) nos cases de "Trabalho em escala" — a prova social que nenhum wireframe substitui.
-- **Domínio próprio para o portfólio** (Settings → Pages → Custom domain).
 
 ## Threads abertas em outros repositórios
 
