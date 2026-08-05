@@ -7,7 +7,7 @@
 
 Site pessoal completo em um único `index.html` sem dependências de build, publicado no GitHub Pages via `.github/workflows/pages.yml` (deploy automático a cada push na `main`). 12 PRs mesclados nesta sessão, último deploy verde (run #13, commit `9e15878`).
 
-- **Conteúdo:** hero, 4 cases comerciais (iFood Order Manager, Magalu e-commerce, Ascensus 401(k), Conductor AISP + Bricks), 6 soluções sob medida, sobre, ferramentas, experiência completa com datas, contato.
+- **Conteúdo:** hero, 4 cases comerciais (iFood Order Manager, Magalu e-commerce, Ascensus 401(k), Conductor AISP + Bricks), 6 soluções sob medida (Movva Mais, Cardápio Zap, Agenda Fácil, Claru, Storyline — ex-Trajeto, agora em storyline.fmeira.dev —, Petree Partners), sobre, ferramentas, experiência completa com datas, contato.
 - **Bilíngue PT/EN** e **tema claro/escuro**, ambos com persistência em localStorage.
 - **Animações GSAP** (core + ScrollTrigger + DrawSVG via CDN) como progressive enhancement.
 - **Sem indexação:** meta robots + `robots.txt` bloqueiam buscadores e crawlers de IA.
@@ -24,7 +24,7 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 
 ## Pendências
 
-- [ ] **Informar as URLs de Agenda Fácil e Trajeto quando lançarem** — hoje os dois cards estão em SOON com domínio borrado; a troca é de 2 linhas por produto. | Bloqueia: 2 dos 6 produtos não podem ser visitados por quem lê o site. | Aberta desde: 2026-07-30 (sessão 1)
+- [ ] **Informar a URL de Agenda Fácil quando lançar** — hoje o card está em SOON com domínio borrado; a troca é de 2 linhas. | Bloqueia: 1 dos 6 produtos não pode ser visitado por quem lê o site. | Aberta desde: 2026-07-30 (sessão 1)
 - [x] ~~**Abrir https://movvamais.app/ no navegador e confirmar que carrega com HTTPS válido**~~ — confirmado pelo Flávio: o domínio está correto e no ar. | Resolvida em: 2026-07-30 (sessão 1)
 - [x] ~~**Apontar o domínio claru.app para o app**~~ — decisão do Flávio: `flavioricardo.github.io/claru` é a URL correta do Claru; não haverá troca de domínio. | Resolvida em: 2026-07-30 (sessão 1)
 
