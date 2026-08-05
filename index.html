@@ -310,12 +310,16 @@
   }
 
   /* ---------- own products ---------- */
-  .products { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  @media (min-width: 800px) {
-    .products { grid-template-columns: repeat(3, 1fr); }
-    /* a lone card on the last row spans the full width instead of leaving a gap */
-    .products .pcard:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
+  .products-group + .products-group { margin-top: 32px; }
+  .group-label {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
   }
+  .group-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .products { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 800px) { .products { grid-template-columns: repeat(3, 1fr); } }
+  .products.single { max-width: 320px; }
   .pcard { border: 1px solid var(--line); border-radius: 6px; background: var(--card); display: flex; flex-direction: column; }
   .pcard .frame-body { min-height: 130px; padding: 14px; }
   .pcard-info { padding: 16px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; flex: 1; }
@@ -577,6 +581,7 @@
       sec_contact_id: 'contato',
       gh_line: 'Protótipos e experimentos ficam no',
       soon_label: 'em breve',
+      group_own: 'Por conta própria', group_client: 'Pra cliente',
       sec_about: 'Sobre',
 sec_stack: 'Ferramentas',
 sec_exp: 'Experiência',
@@ -606,6 +611,7 @@ sec_exp: 'Experiência',
       sec_contact_id: 'contact',
       gh_line: 'Prototypes and experiments live on',
       soon_label: 'soon',
+      group_own: 'On my own', group_client: 'For a client',
       sec_about: 'About',
 sec_stack: 'Tools',
 sec_exp: 'Experience',
@@ -741,7 +747,7 @@ sec_exp: 'Experience',
           wire: 'pitch'
         },
         {
-          title: 'Petree Partners', url: 'petreepartners.com',
+          title: 'Petree Partners', url: 'petreepartners.com', group: 'client',
           kind: en ? 'client · Houston, USA' : 'cliente · Houston, EUA',
           desc: en
             ? 'Marketing site for a consultancy, from the Figma layout to the WordPress and Elementor build.'
@@ -1092,31 +1098,45 @@ sec_exp: 'Experience',
     });
   }
 
+  function buildProductCard(p, t) {
+    var card = el('div', 'pcard');
+    var bar = el('div', 'frame-bar');
+    bar.appendChild(el('span', 'sq'));
+    var urlSpan = el('span', p.soon ? 'url-blur' : null, p.url);
+    if (p.soon) urlSpan.setAttribute('aria-hidden', 'true');
+    bar.appendChild(urlSpan);
+    card.appendChild(bar);
+    card.appendChild(buildWire(p.wire));
+    var info = el('div', 'pcard-info');
+    info.appendChild(el('h3', null, p.title));
+    info.appendChild(el('span', 'pcard-kind', p.kind));
+    info.appendChild(el('p', 'pcard-desc', p.desc));
+    if (p.soon) {
+      info.appendChild(el('span', 'pcard-link soon', t.soon_label));
+    } else {
+      var link = el('a', 'pcard-link', p.linkLabel + ' ↗');
+      link.href = p.href; link.target = '_blank'; link.rel = 'noopener';
+      info.appendChild(link);
+    }
+    card.appendChild(info);
+    return card;
+  }
+
   function renderProducts(d, t) {
     var list = document.getElementById('products-list');
     list.textContent = '';
-    d.products.forEach(function (p) {
-      var card = el('div', 'pcard');
-      var bar = el('div', 'frame-bar');
-      bar.appendChild(el('span', 'sq'));
-      var urlSpan = el('span', p.soon ? 'url-blur' : null, p.url);
-      if (p.soon) urlSpan.setAttribute('aria-hidden', 'true');
-      bar.appendChild(urlSpan);
-      card.appendChild(bar);
-      card.appendChild(buildWire(p.wire));
-      var info = el('div', 'pcard-info');
-      info.appendChild(el('h3', null, p.title));
-      info.appendChild(el('span', 'pcard-kind', p.kind));
-      info.appendChild(el('p', 'pcard-desc', p.desc));
-      if (p.soon) {
-        info.appendChild(el('span', 'pcard-link soon', t.soon_label));
-      } else {
-        var link = el('a', 'pcard-link', p.linkLabel + ' ↗');
-        link.href = p.href; link.target = '_blank'; link.rel = 'noopener';
-        info.appendChild(link);
-      }
-      card.appendChild(info);
-      list.appendChild(card);
+    var groups = [
+      { label: t.group_own, items: d.products.filter(function (p) { return p.group !== 'client'; }) },
+      { label: t.group_client, items: d.products.filter(function (p) { return p.group === 'client'; }) }
+    ];
+    groups.forEach(function (g) {
+      if (!g.items.length) return;
+      var wrap = el('div', 'products-group');
+      wrap.appendChild(el('div', 'group-label', g.label));
+      var grid = el('div', 'products' + (g.items.length === 1 ? ' single' : ''));
+      g.items.forEach(function (p) { grid.appendChild(buildProductCard(p, t)); });
+      wrap.appendChild(grid);
+      list.appendChild(wrap);
     });
   }
 
