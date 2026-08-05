@@ -311,7 +311,11 @@
 
   /* ---------- own products ---------- */
   .products { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  @media (min-width: 800px) { .products { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 800px) {
+    .products { grid-template-columns: repeat(3, 1fr); }
+    /* a lone card on the last row spans the full width instead of leaving a gap */
+    .products .pcard:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
+  }
   .pcard { border: 1px solid var(--line); border-radius: 6px; background: var(--card); display: flex; flex-direction: column; }
   .pcard .frame-body { min-height: 130px; padding: 14px; }
   .pcard-info { padding: 16px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; flex: 1; }
@@ -727,6 +731,16 @@ sec_exp: 'Experience',
           wire: 'route'
         },
         {
+          title: 'Pelota', url: 'pelota.fmeira.dev',
+          kind: en ? 'product · multiplayer game' : 'produto · jogo multiplayer',
+          desc: en
+            ? 'An online football tournament to play with friends by link: everyone drafts a squad from a shared budget and listens to the match narrated live, minute by minute, synced for the whole room. 2 to 8 players, no sign-up, just a nickname.'
+            : 'Campeonato de futebol para jogar com os amigos pelo link: cada um monta o time dentro de um orçamento e ouve a partida narrada ao vivo, minuto a minuto, sincronizada para a sala inteira. De 2 a 8 jogadores, sem cadastro, só apelido.',
+          href: 'https://pelota.fmeira.dev/',
+          linkLabel: en ? 'visit' : 'visitar',
+          wire: 'pitch'
+        },
+        {
           title: 'Petree Partners', url: 'petreepartners.com',
           kind: en ? 'client · Houston, USA' : 'cliente · Houston, EUA',
           desc: en
@@ -921,6 +935,40 @@ sec_exp: 'Experience',
       var cta = el('div', 'w-cta');
       cta.appendChild(el('i'));
       body.appendChild(cta);
+    } else if (kind === 'pitch') {
+      var scoreRow = el('div');
+      scoreRow.style.cssText = 'display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;';
+      var score = el('div', 'w-line strong');
+      score.style.cssText = 'width:38px;height:14px;';
+      var live = el('span');
+      live.style.cssText = 'font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.06em;color:var(--redline-ink);background:var(--redline);border-radius:3px;padding:2px 6px;opacity:.9;';
+      live.textContent = "72'";
+      scoreRow.appendChild(score);
+      scoreRow.appendChild(live);
+      body.appendChild(scoreRow);
+      var pitch = el('div');
+      pitch.style.cssText = 'border:1px solid var(--line);border-radius:6px;padding:10px 6px;display:flex;flex-direction:column;gap:9px;margin-bottom:10px;';
+      [1, 3, 3, 3].forEach(function (n, ri) {
+        var row = el('div');
+        row.style.cssText = 'display:flex;justify-content:center;gap:14px;';
+        for (i = 0; i < n; i++) {
+          var dot = el('span');
+          dot.style.cssText = 'width:9px;height:9px;border-radius:999px;flex:none;' +
+            (ri === 2 && i === 1 ? 'background:var(--redline);opacity:.9;' : 'background:var(--wire2);');
+          row.appendChild(dot);
+        }
+        pitch.appendChild(row);
+      });
+      body.appendChild(pitch);
+      var budget = el('div');
+      budget.style.cssText = 'display:flex;align-items:center;gap:8px;';
+      var blabel = el('div', 'w-line'); blabel.style.width = '46px';
+      var bbar = el('div'); bbar.style.cssText = 'flex:1;height:6px;border-radius:3px;background:var(--wire);position:relative;overflow:hidden;';
+      var bfill = el('div'); bfill.style.cssText = 'position:absolute;inset:0;right:28%;background:var(--redline);opacity:.75;border-radius:3px;';
+      bbar.appendChild(bfill);
+      budget.appendChild(blabel);
+      budget.appendChild(bbar);
+      body.appendChild(budget);
     } else if (kind === 'workout') {
       var head2 = el('div', 'w-nav');
       head2.appendChild(el('div', 'w-line strong')).style.width = '96px';
