@@ -310,7 +310,8 @@
   }
 
   /* ---------- own products ---------- */
-  .products-group + .products-group { margin-top: 32px; }
+  .products-split { display: flex; flex-direction: column; gap: 32px; }
+  .products-group { min-width: 0; }
   .group-label {
     font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .07em;
     text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
@@ -318,8 +319,13 @@
   }
   .group-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
   .products { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  @media (min-width: 800px) { .products { grid-template-columns: repeat(3, 1fr); } }
-  .products.single { max-width: 320px; }
+  @media (min-width: 560px) { .products { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); } }
+  @media (min-width: 900px) {
+    /* side-by-side split: own products get more room, client work sits in a divided column */
+    .products-split { flex-direction: row; align-items: flex-start; gap: 0; }
+    .products-split .products-group:first-child { flex: 2 1 0; min-width: 0; padding-right: 32px; }
+    .products-split .products-group:last-child { flex: 1 1 0; min-width: 0; padding-left: 32px; border-left: 1px solid var(--line); }
+  }
   .pcard { border: 1px solid var(--line); border-radius: 6px; background: var(--card); display: flex; flex-direction: column; }
   .pcard .frame-body { min-height: 130px; padding: 14px; }
   .pcard-info { padding: 16px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; flex: 1; }
@@ -515,7 +521,7 @@
       <div class="sec-id"><span data-t="sec_products_id"></span></div>
       <h2 class="sec-title" data-t="sec_products"></h2>
     </div>
-    <div class="products" id="products-list"></div>
+    <div class="products-split" id="products-list"></div>
     <p class="gh-line"><span data-t="gh_line"></span> <a href="https://github.com/flavioricardo" target="_blank" rel="noopener">github.com/flavioricardo ↗</a></p>
   </section>
 
@@ -1133,7 +1139,7 @@ sec_exp: 'Experience',
       if (!g.items.length) return;
       var wrap = el('div', 'products-group');
       wrap.appendChild(el('div', 'group-label', g.label));
-      var grid = el('div', 'products' + (g.items.length === 1 ? ' single' : ''));
+      var grid = el('div', 'products');
       g.items.forEach(function (p) { grid.appendChild(buildProductCard(p, t)); });
       wrap.appendChild(grid);
       list.appendChild(wrap);
