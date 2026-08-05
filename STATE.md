@@ -7,7 +7,7 @@
 
 Site pessoal completo em um único `index.html` sem dependências de build, publicado no GitHub Pages via `.github/workflows/pages.yml` (deploy automático a cada push na `main`). 12 PRs mesclados nesta sessão, último deploy verde (run #13, commit `9e15878`).
 
-- **Conteúdo:** hero, 4 cases comerciais (iFood Order Manager, Magalu e-commerce, Ascensus 401(k), Conductor AISP + Bricks), 6 soluções sob medida (Movva Mais, Cardápio Zap, Agenda Fácil, Claru, Storyline — ex-Trajeto, agora em storyline.fmeira.dev —, Petree Partners), sobre, ferramentas, experiência completa com datas, contato.
+- **Conteúdo:** hero, 4 cases comerciais (iFood Order Manager, Magalu e-commerce, Ascensus 401(k), Conductor AISP + Bricks), 7 soluções sob medida (Movva Mais, Cardápio Zap, Agenda Fácil, Claru, Storyline — ex-Trajeto, agora em storyline.fmeira.dev —, Pelota, Petree Partners), sobre, ferramentas, experiência completa com datas, contato.
 - **Bilíngue PT/EN** e **tema claro/escuro**, ambos com persistência em localStorage.
 - **Animações GSAP** (core + ScrollTrigger + DrawSVG via CDN) como progressive enhancement.
 - **Sem indexação:** meta robots + `robots.txt` bloqueiam buscadores e crawlers de IA.
