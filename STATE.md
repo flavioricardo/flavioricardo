@@ -1,9 +1,11 @@
 # STATE — Portfólio (flavioricardo/flavioricardo)
 
-**Última sessão:** 2026-07-30 (sessão 1)
-**No ar:** https://fmeira.dev/ — domínio próprio, configurado em Settings → Pages (sem arquivo CNAME no repo, que é o caminho correto para deploy via GitHub Actions). É esta a URL de referência para revisar qualquer mudança.
+**Última sessão:** 2026-09-10 (sessão 2)
+**No ar:** https://fmeira.dev/ serve hoje apenas uma página de "temporariamente fora do ar" — o site foi retirado do ar a pedido do Flávio em 2026-09-10. O domínio, o GitHub Pages e o workflow de deploy continuam ativos. A última versão completa do `index.html` está no commit `012b928` (blob `b912b1c`); restaurar é `git checkout 012b928 -- index.html` e mergear na `main`.
 
 ## Estado atual
+
+**Fora do ar desde 2026-09-10.** O `index.html` da `main` é um placeholder estático (sem JS, sem fontes externas, sem links, `noindex`) com um recado bilíngue e nada mais. Tudo abaixo descreve o site completo, que segue intacto no histórico do git e volta com um único checkout.
 
 Site pessoal completo em um único `index.html` sem dependências de build, publicado no GitHub Pages via `.github/workflows/pages.yml` (deploy automático a cada push na `main`). 12 PRs mesclados nesta sessão, último deploy verde (run #13, commit `9e15878`).
 
@@ -24,6 +26,7 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 
 ## Pendências
 
+- [ ] **Colocar o site de volta no ar quando o Flávio pedir** — `git checkout 012b928 -- index.html`, commit e merge na `main`; o deploy é automático. | Bloqueia: o portfólio inteiro está invisível. | Aberta desde: 2026-09-10 (sessão 2)
 - [ ] **Informar a URL de Agenda Fácil quando lançar** — hoje o card está em SOON com domínio borrado; a troca é de 2 linhas. | Bloqueia: 1 dos 6 produtos não pode ser visitado por quem lê o site. | Aberta desde: 2026-07-30 (sessão 1)
 - [x] ~~**Abrir https://movvamais.app/ no navegador e confirmar que carrega com HTTPS válido**~~ — confirmado pelo Flávio: o domínio está correto e no ar. | Resolvida em: 2026-07-30 (sessão 1)
 - [x] ~~**Apontar o domínio claru.app para o app**~~ — decisão do Flávio: `flavioricardo.github.io/claru` é a URL correta do Claru; não haverá troca de domínio. | Resolvida em: 2026-07-30 (sessão 1)
