@@ -272,6 +272,21 @@
   .w-hero-mini { display: grid; grid-template-columns: 3fr 2fr; gap: 8px; }
   .w-hero-mini .copy { display: flex; flex-direction: column; gap: 5px; justify-content: center; }
   .w-hero-mini .img { border-radius: 3px; background: var(--wire); min-height: 54px; }
+  .w-ports .map { position: relative; height: 58px; border-radius: 3px; background: var(--wire); }
+  .w-ports .dot { position: absolute; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--wire2); }
+  .w-ports .dot.on { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: var(--redline); opacity: .9; }
+  .w-ports .tip { position: absolute; width: 44px; height: 12px; border-radius: 2px; background: var(--paper); border: 1px solid var(--line); transform: translate(-50%, calc(-100% - 8px)); }
+  .w-ports .region { height: 5px; width: 62px; border-radius: 2px; background: var(--wire2); margin: 12px 0 2px; }
+  .w-ports .item { display: flex; align-items: center; gap: 7px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .w-ports .item i { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--wire2); }
+  .w-ports .item.on i { background: var(--redline); opacity: .9; }
+  .w-ports .item .w-line { height: 6px; }
+  .w-serv .headline { display: flex; flex-direction: column; gap: 6px; }
+  .w-serv .headline .w-line { height: 10px; }
+  .w-serv .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
+  .w-serv .card { display: flex; flex-direction: column; gap: 5px; min-height: 44px; padding: 7px; border-radius: 3px; background: var(--wire); }
+  .w-serv .card .w-line { height: 5px; background: var(--wire2); }
+  .w-serv .card .arrow { width: 11px; height: 3px; border-radius: 2px; background: var(--redline); opacity: .85; margin-top: auto; }
 
   .callout {
     position: absolute; z-index: 2;
@@ -708,26 +723,26 @@ sec_exp: 'Experience',
           title: 'Cardápio Zap', url: 'cardapiozap.app',
           kind: en ? 'product · paying customers' : 'produto · clientes pagantes',
           desc: en
-            ? 'Digital menu for restaurants: each house gets its own space and plan, with ordering through WhatsApp.'
-            : 'Cardápio digital para restaurantes: cada casa tem seu espaço e seu plano, com pedido pelo WhatsApp.',
+            ? 'Digital menu for restaurants, with no commission: the customer builds the order from a link and it lands written out in the restaurant\'s WhatsApp. Comes with an order queue, stock control and the address filled in by postcode.'
+            : 'Cardápio digital para restaurantes, sem comissão: o cliente monta o pedido pelo link e ele chega escrito no WhatsApp da casa. Vem com fila de pedidos, controle de estoque e endereço preenchido pelo CEP.',
           href: 'https://www.cardapiozap.app/',
           linkLabel: en ? 'visit' : 'visitar',
           wire: 'menu'
         },
         {
-          title: 'Agenda Fácil', url: 'agenda-facil.app', soon: true,
+          title: 'Agenda Fácil', url: 'agendafacil.fmeira.dev', soon: true,
           kind: en ? 'product · in production' : 'produto · em produção',
           desc: en
-            ? 'Scheduling for service providers: clients pick their own time slot and the professional follows the whole agenda in one place.'
-            : 'Agendamento para prestadores de serviço: o cliente escolhe o horário sozinho e o profissional acompanha a agenda inteira em um só lugar.',
+            ? 'Scheduling for people who live by the appointment book: a booking page with its own link for the bio, where the client picks service, day and time alone. WhatsApp reminders and an upfront Pix deposit against no-shows.'
+            : 'Agendamento para quem vive de hora marcada: uma página com link próprio pra botar na bio, onde o cliente escolhe serviço, dia e horário sozinho. Lembrete no WhatsApp e sinal via Pix contra o furo.',
           wire: 'calendar'
         },
         {
           title: 'Claru', url: 'flavioricardo.github.io/claru',
           kind: en ? 'app · well-being' : 'app · bem-estar',
           desc: en
-            ? 'App to cut down or quit alcohol: daily check-ins, sobriety counter and an SOS mode. Data stays on the device; analytics only with consent.'
-            : 'App para reduzir ou zerar o consumo de álcool: check-in diário, contagem de sobriedade e modo SOS. Dados ficam no aparelho; analytics só com consentimento.',
+            ? 'App to cut down or quit alcohol. It opens with AUDIT-C, the WHO questionnaire, then shows on a timeline what changes in your body with each day without drinking, drawn from peer-reviewed research. No sign-up; data stays on the device.'
+            : 'App para reduzir ou zerar o consumo de álcool. Começa pelo AUDIT-C, o questionário da OMS, e mostra numa linha do tempo o que muda no corpo a cada dia sem beber, com base em pesquisa revisada por pares. Sem cadastro; os dados ficam no aparelho.',
           href: 'https://flavioricardo.github.io/claru/',
           linkLabel: en ? 'visit' : 'visitar',
           wire: 'streak'
@@ -756,11 +771,21 @@ sec_exp: 'Experience',
           title: 'Petree Partners', url: 'petreepartners.com', group: 'client',
           kind: en ? 'client · Houston, USA' : 'cliente · Houston, EUA',
           desc: en
-            ? 'Marketing site for a consultancy, from the Figma layout to the WordPress and Elementor build.'
-            : 'Site institucional para consultoria, do layout no Figma à entrega em WordPress e Elementor.',
+            ? 'Site for a fractional executive advisory, from the Figma layout to the WordPress and Elementor build: an editorial home carried by serif type, six service pages, team and contact.'
+            : 'Site de uma consultoria de executivos fracionários, do layout no Figma à entrega em WordPress e Elementor: home editorial sustentada pela tipografia serifada, seis páginas de serviço, time e contato.',
           href: 'https://petreepartners.com/',
           linkLabel: en ? 'visit' : 'visitar',
-          wire: 'landing'
+          wire: 'services'
+        },
+        {
+          title: 'Seaside LNG', url: 'seasidelng.com', group: 'client',
+          kind: en ? 'client · Houston, USA' : 'cliente · Houston, EUA',
+          desc: en
+            ? 'Ports of service map on a WordPress and Elementor site. The desktop map broke down on a phone, so I rebuilt the section for mobile: 20 ports grouped by region, each one a keyboard-accessible button, over a map that follows the list as it scrolls.'
+            : 'Mapa de portos de atendimento em site WordPress e Elementor. O mapa de desktop não funcionava no celular, então refiz a seção para mobile: 20 portos agrupados por região, cada um um botão acessível por teclado, sobre um mapa que acompanha a lista enquanto ela rola.',
+          href: 'https://seasidelng.com/',
+          linkLabel: en ? 'visit' : 'visitar',
+          wire: 'ports'
         }
       ],
       facts: [
@@ -1056,6 +1081,54 @@ sec_exp: 'Experience',
       var busy = [2, 9, 12];
       for (i = 0; i < 14; i++) grid.appendChild(el('div', busy.indexOf(i) >= 0 ? 'slot busy' : 'slot'));
       body.appendChild(grid);
+    } else if (kind === 'services') {
+      var serv = el('div', 'w-serv');
+      var shero = el('div', 'headline');
+      [58, 44, 88].forEach(function (w) {
+        var line = el('div', 'w-line strong');
+        line.style.width = w + '%';
+        shero.appendChild(line);
+      });
+      serv.appendChild(shero);
+      var scards = el('div', 'cards');
+      [72, 88, 64].forEach(function (w) {
+        var scard = el('div', 'card');
+        var stitle = el('div', 'w-line');
+        stitle.style.width = w + '%';
+        scard.appendChild(stitle);
+        var ssub = el('div', 'w-line');
+        ssub.style.width = '46%';
+        scard.appendChild(ssub);
+        scard.appendChild(el('div', 'arrow'));
+        scards.appendChild(scard);
+      });
+      serv.appendChild(scards);
+      body.appendChild(serv);
+    } else if (kind === 'ports') {
+      var ports = el('div', 'w-ports');
+      var pmap = el('div', 'map');
+      var ppts = [[15, 72], [21, 44], [37, 82], [52, 78], [57, 86], [74, 28], [78, 40], [82, 58], [86, 72], [89, 86]];
+      ppts.forEach(function (pt, pi) {
+        var dot = el('i', pi === 7 ? 'dot on' : 'dot');
+        dot.style.left = pt[0] + '%';
+        dot.style.top = pt[1] + '%';
+        pmap.appendChild(dot);
+      });
+      var ptip = el('span', 'tip');
+      ptip.style.left = ppts[7][0] + '%';
+      ptip.style.top = ppts[7][1] + '%';
+      pmap.appendChild(ptip);
+      ports.appendChild(pmap);
+      ports.appendChild(el('div', 'region'));
+      for (i = 0; i < 2; i++) {
+        var pitem = el('div', i === 0 ? 'item on' : 'item');
+        pitem.appendChild(el('i'));
+        var pline = el('div', i === 0 ? 'w-line strong' : 'w-line');
+        pline.style.width = i === 0 ? '58%' : '44%';
+        pitem.appendChild(pline);
+        ports.appendChild(pitem);
+      }
+      body.appendChild(ports);
     } else {
       var mini = el('div', 'w-hero-mini');
       var copy = el('div', 'copy');

@@ -1,6 +1,6 @@
 # STATE — Portfólio (flavioricardo/flavioricardo)
 
-**Última sessão:** 2026-09-11 (sessão 3)
+**Última sessão:** 2026-09-17 (sessão 4)
 **No ar:** https://fmeira.dev/ — site completo restaurado (estava temporariamente fora do ar desde 2026-09-10). O domínio, o GitHub Pages e o workflow de deploy continuam ativos; o deploy acontece automaticamente ao mergear esta branch na `main`.
 
 ## Estado atual
@@ -9,7 +9,7 @@
 
 Site pessoal completo em um único `index.html` sem dependências de build, publicado no GitHub Pages via `.github/workflows/pages.yml` (deploy automático a cada push na `main`). 12 PRs mesclados na sessão 1, último deploy verde (run #13, commit `9e15878`).
 
-- **Conteúdo:** hero, 4 cases comerciais (iFood Order Manager, Magalu e-commerce, Ascensus 401(k), Conductor AISP + Bricks), 7 soluções sob medida (Movva Mais, Cardápio Zap, Agenda Fácil, Claru, Storyline — ex-Trajeto, agora em storyline.fmeira.dev —, Pelota, Petree Partners), sobre, ferramentas, experiência completa com datas, contato.
+- **Conteúdo:** hero, 4 cases comerciais (iFood Order Manager, Magalu e-commerce, Ascensus 401(k), Conductor AISP + Bricks), 8 soluções sob medida (Movva Mais, Cardápio Zap, Agenda Fácil, Claru, Storyline — ex-Trajeto, agora em storyline.fmeira.dev —, Pelota, e dois clientes: Petree Partners e Seaside LNG), sobre, ferramentas, experiência completa com datas, contato.
 - **Bilíngue PT/EN** e **tema claro/escuro**, ambos com persistência em localStorage.
 - **Animações GSAP** (core + ScrollTrigger + DrawSVG via CDN) como progressive enhancement.
 - **Sem indexação:** meta robots + `robots.txt` bloqueiam buscadores e crawlers de IA.
@@ -22,12 +22,15 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 - **GSAP degrada em silêncio:** se o CDN falhar ou o usuário pedir `prefers-reduced-motion`, a página renderiza estática e completa. Os ScrollTriggers são recriados a cada troca de tema/idioma porque o render reconstrói o DOM.
 - **Produtos não lançados** aparecem com o domínio futuro borrado (`filter: blur`, `aria-hidden`) e o link desabilitado como SOON/EM BREVE.
 - **Fontes pelo Google Fonts** (único recurso render-blocking).
+- **Cuidado com colisão de classe nos wireframes.** As classes dos wireframes são genéricas (`.card`, `.hero`, `.item`) e vivem na mesma folha do site. `.w-serv .hero` herdou o `padding` do `.hero` da página e esticou o frame de 130px para 288px; virou `.headline`. Ao criar wireframe novo, conferir se o nome já existe na folha antes de usar.
+- **Trabalho de cliente descreve resultado, não infra do cliente.** O card do Seaside LNG conta o que a seção Ports Of Service resolveu (mapa de 20 portos refeito para mobile, botões acessíveis por teclado, mapa que acompanha a lista). Ficou de fora, de propósito, que a produção do cliente não tem SSH nem WP-CLI e bloqueia PHP arbitrário — isso é postura de segurança deles, não vitrine minha. O detalhe vive no STATE.md do `seasidelngcom`.
 - **Sem artifact de pré-visualização.** A revisão de qualquer mudança acontece no site publicado (https://fmeira.dev/) depois do merge; o artifact que existiu durante a construção foi descontinuado a pedido do Flávio em 2026-07-30.
 
 ## Pendências
 
 - [x] ~~**Colocar o site de volta no ar quando o Flávio pedir**~~ — `index.html` restaurado a partir do commit `012b928`. | Resolvida em: 2026-09-11 (sessão 3)
-- [ ] **Informar a URL de Agenda Fácil quando lançar** — hoje o card está em SOON com domínio borrado; a troca é de 2 linhas. | Bloqueia: 1 dos 6 produtos não pode ser visitado por quem lê o site. | Aberta desde: 2026-07-30 (sessão 1)
+- [ ] **Decidir quando tirar o Agenda Fácil do SOON** — o domínio no card passou a ser `agendafacil.fmeira.dev`, que já serve landing completa (agendamento por link, lembrete no WhatsApp, sinal via Pix contra no-show) com cadastro aberto. O Flávio decidiu em 2026-09-17 manter o card como SOON mesmo assim; quando liberar, é desborrar o domínio e ligar o link. | Bloqueia: 1 dos 6 produtos não pode ser visitado por quem lê o site. | Aberta desde: 2026-07-30 (sessão 1)
+- [ ] **NÃO linkar `agenda-facil.app`** — o domínio antigo saiu das mãos do Flávio e hoje serve o **Omnily**, produto de terceiro, com tela de login na raiz. Confirmado no navegador em 2026-09-17. | Aberta desde: 2026-09-17 (sessão 4)
 - [x] ~~**Abrir https://movvamais.app/ no navegador e confirmar que carrega com HTTPS válido**~~ — confirmado pelo Flávio: o domínio está correto e no ar. | Resolvida em: 2026-07-30 (sessão 1)
 - [x] ~~**Apontar o domínio claru.app para o app**~~ — decisão do Flávio: `flavioricardo.github.io/claru` é a URL correta do Claru; não haverá troca de domínio. | Resolvida em: 2026-07-30 (sessão 1)
 
