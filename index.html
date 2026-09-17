@@ -281,6 +281,12 @@
   .w-ports .item i { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--wire2); }
   .w-ports .item.on i { background: var(--redline); opacity: .9; }
   .w-ports .item .w-line { height: 6px; }
+  .w-serv .headline { display: flex; flex-direction: column; gap: 6px; }
+  .w-serv .headline .w-line { height: 10px; }
+  .w-serv .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
+  .w-serv .card { display: flex; flex-direction: column; gap: 5px; min-height: 44px; padding: 7px; border-radius: 3px; background: var(--wire); }
+  .w-serv .card .w-line { height: 5px; background: var(--wire2); }
+  .w-serv .card .arrow { width: 11px; height: 3px; border-radius: 2px; background: var(--redline); opacity: .85; margin-top: auto; }
 
   .callout {
     position: absolute; z-index: 2;
@@ -765,11 +771,11 @@ sec_exp: 'Experience',
           title: 'Petree Partners', url: 'petreepartners.com', group: 'client',
           kind: en ? 'client · Houston, USA' : 'cliente · Houston, EUA',
           desc: en
-            ? 'Marketing site for a consultancy, from the Figma layout to the WordPress and Elementor build.'
-            : 'Site institucional para consultoria, do layout no Figma à entrega em WordPress e Elementor.',
+            ? 'Site for a fractional executive advisory, from the Figma layout to the WordPress and Elementor build: an editorial home carried by serif type, six service pages, team and contact.'
+            : 'Site de uma consultoria de executivos fracionários, do layout no Figma à entrega em WordPress e Elementor: home editorial sustentada pela tipografia serifada, seis páginas de serviço, time e contato.',
           href: 'https://petreepartners.com/',
           linkLabel: en ? 'visit' : 'visitar',
-          wire: 'landing'
+          wire: 'services'
         },
         {
           title: 'Seaside LNG', url: 'seasidelng.com', group: 'client',
@@ -1075,6 +1081,29 @@ sec_exp: 'Experience',
       var busy = [2, 9, 12];
       for (i = 0; i < 14; i++) grid.appendChild(el('div', busy.indexOf(i) >= 0 ? 'slot busy' : 'slot'));
       body.appendChild(grid);
+    } else if (kind === 'services') {
+      var serv = el('div', 'w-serv');
+      var shero = el('div', 'headline');
+      [58, 44, 88].forEach(function (w) {
+        var line = el('div', 'w-line strong');
+        line.style.width = w + '%';
+        shero.appendChild(line);
+      });
+      serv.appendChild(shero);
+      var scards = el('div', 'cards');
+      [72, 88, 64].forEach(function (w) {
+        var scard = el('div', 'card');
+        var stitle = el('div', 'w-line');
+        stitle.style.width = w + '%';
+        scard.appendChild(stitle);
+        var ssub = el('div', 'w-line');
+        ssub.style.width = '46%';
+        scard.appendChild(ssub);
+        scard.appendChild(el('div', 'arrow'));
+        scards.appendChild(scard);
+      });
+      serv.appendChild(scards);
+      body.appendChild(serv);
     } else if (kind === 'ports') {
       var ports = el('div', 'w-ports');
       var pmap = el('div', 'map');

@@ -22,6 +22,7 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 - **GSAP degrada em silêncio:** se o CDN falhar ou o usuário pedir `prefers-reduced-motion`, a página renderiza estática e completa. Os ScrollTriggers são recriados a cada troca de tema/idioma porque o render reconstrói o DOM.
 - **Produtos não lançados** aparecem com o domínio futuro borrado (`filter: blur`, `aria-hidden`) e o link desabilitado como SOON/EM BREVE.
 - **Fontes pelo Google Fonts** (único recurso render-blocking).
+- **Cuidado com colisão de classe nos wireframes.** As classes dos wireframes são genéricas (`.card`, `.hero`, `.item`) e vivem na mesma folha do site. `.w-serv .hero` herdou o `padding` do `.hero` da página e esticou o frame de 130px para 288px; virou `.headline`. Ao criar wireframe novo, conferir se o nome já existe na folha antes de usar.
 - **Trabalho de cliente descreve resultado, não infra do cliente.** O card do Seaside LNG conta o que a seção Ports Of Service resolveu (mapa de 20 portos refeito para mobile, botões acessíveis por teclado, mapa que acompanha a lista). Ficou de fora, de propósito, que a produção do cliente não tem SSH nem WP-CLI e bloqueia PHP arbitrário — isso é postura de segurança deles, não vitrine minha. O detalhe vive no STATE.md do `seasidelngcom`.
 - **Sem artifact de pré-visualização.** A revisão de qualquer mudança acontece no site publicado (https://fmeira.dev/) depois do merge; o artifact que existiu durante a construção foi descontinuado a pedido do Flávio em 2026-07-30.
 
