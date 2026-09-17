@@ -29,7 +29,8 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 ## Pendências
 
 - [x] ~~**Colocar o site de volta no ar quando o Flávio pedir**~~ — `index.html` restaurado a partir do commit `012b928`. | Resolvida em: 2026-09-11 (sessão 3)
-- [ ] **Informar a URL de Agenda Fácil quando lançar** — hoje o card está em SOON com domínio borrado; a troca é de 2 linhas. | Bloqueia: 1 dos 6 produtos não pode ser visitado por quem lê o site. | Aberta desde: 2026-07-30 (sessão 1)
+- [ ] **Decidir quando tirar o Agenda Fácil do SOON** — o domínio no card passou a ser `agendafacil.fmeira.dev`, que já serve landing completa (agendamento por link, lembrete no WhatsApp, sinal via Pix contra no-show) com cadastro aberto. O Flávio decidiu em 2026-09-17 manter o card como SOON mesmo assim; quando liberar, é desborrar o domínio e ligar o link. | Bloqueia: 1 dos 6 produtos não pode ser visitado por quem lê o site. | Aberta desde: 2026-07-30 (sessão 1)
+- [ ] **NÃO linkar `agenda-facil.app`** — o domínio antigo saiu das mãos do Flávio e hoje serve o **Omnily**, produto de terceiro, com tela de login na raiz. Confirmado no navegador em 2026-09-17. | Aberta desde: 2026-09-17 (sessão 4)
 - [x] ~~**Abrir https://movvamais.app/ no navegador e confirmar que carrega com HTTPS válido**~~ — confirmado pelo Flávio: o domínio está correto e no ar. | Resolvida em: 2026-07-30 (sessão 1)
 - [x] ~~**Apontar o domínio claru.app para o app**~~ — decisão do Flávio: `flavioricardo.github.io/claru` é a URL correta do Claru; não haverá troca de domínio. | Resolvida em: 2026-07-30 (sessão 1)
 
