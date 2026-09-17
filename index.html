@@ -272,6 +272,15 @@
   .w-hero-mini { display: grid; grid-template-columns: 3fr 2fr; gap: 8px; }
   .w-hero-mini .copy { display: flex; flex-direction: column; gap: 5px; justify-content: center; }
   .w-hero-mini .img { border-radius: 3px; background: var(--wire); min-height: 54px; }
+  .w-ports .map { position: relative; height: 58px; border-radius: 3px; background: var(--wire); }
+  .w-ports .dot { position: absolute; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--wire2); }
+  .w-ports .dot.on { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: var(--redline); opacity: .9; }
+  .w-ports .tip { position: absolute; width: 44px; height: 12px; border-radius: 2px; background: var(--paper); border: 1px solid var(--line); transform: translate(-50%, calc(-100% - 8px)); }
+  .w-ports .region { height: 5px; width: 62px; border-radius: 2px; background: var(--wire2); margin: 12px 0 2px; }
+  .w-ports .item { display: flex; align-items: center; gap: 7px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .w-ports .item i { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--wire2); }
+  .w-ports .item.on i { background: var(--redline); opacity: .9; }
+  .w-ports .item .w-line { height: 6px; }
 
   .callout {
     position: absolute; z-index: 2;
@@ -761,6 +770,16 @@ sec_exp: 'Experience',
           href: 'https://petreepartners.com/',
           linkLabel: en ? 'visit' : 'visitar',
           wire: 'landing'
+        },
+        {
+          title: 'Seaside LNG', url: 'seasidelng.com', group: 'client',
+          kind: en ? 'client · Houston, USA' : 'cliente · Houston, EUA',
+          desc: en
+            ? 'Ports of service map on a WordPress and Elementor site. The desktop map broke down on a phone, so I rebuilt the section for mobile: 20 ports grouped by region, each one a keyboard-accessible button, over a map that follows the list as it scrolls.'
+            : 'Mapa de portos de atendimento em site WordPress e Elementor. O mapa de desktop não funcionava no celular, então refiz a seção para mobile: 20 portos agrupados por região, cada um um botão acessível por teclado, sobre um mapa que acompanha a lista enquanto ela rola.',
+          href: 'https://seasidelng.com/',
+          linkLabel: en ? 'visit' : 'visitar',
+          wire: 'ports'
         }
       ],
       facts: [
@@ -1056,6 +1075,31 @@ sec_exp: 'Experience',
       var busy = [2, 9, 12];
       for (i = 0; i < 14; i++) grid.appendChild(el('div', busy.indexOf(i) >= 0 ? 'slot busy' : 'slot'));
       body.appendChild(grid);
+    } else if (kind === 'ports') {
+      var ports = el('div', 'w-ports');
+      var pmap = el('div', 'map');
+      var ppts = [[15, 72], [21, 44], [37, 82], [52, 78], [57, 86], [74, 28], [78, 40], [82, 58], [86, 72], [89, 86]];
+      ppts.forEach(function (pt, pi) {
+        var dot = el('i', pi === 7 ? 'dot on' : 'dot');
+        dot.style.left = pt[0] + '%';
+        dot.style.top = pt[1] + '%';
+        pmap.appendChild(dot);
+      });
+      var ptip = el('span', 'tip');
+      ptip.style.left = ppts[7][0] + '%';
+      ptip.style.top = ppts[7][1] + '%';
+      pmap.appendChild(ptip);
+      ports.appendChild(pmap);
+      ports.appendChild(el('div', 'region'));
+      for (i = 0; i < 2; i++) {
+        var pitem = el('div', i === 0 ? 'item on' : 'item');
+        pitem.appendChild(el('i'));
+        var pline = el('div', i === 0 ? 'w-line strong' : 'w-line');
+        pline.style.width = i === 0 ? '58%' : '44%';
+        pitem.appendChild(pline);
+        ports.appendChild(pitem);
+      }
+      body.appendChild(ports);
     } else {
       var mini = el('div', 'w-hero-mini');
       var copy = el('div', 'copy');
