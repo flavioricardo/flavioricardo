@@ -10,7 +10,7 @@
 
 ###
 
-<p align="left">🔭 I’m focused on building AI-powered recommendation interfaces and a design system at Conductor (BairesDev) using React, Next.js, and Tailwind CSS.👯 I’m interested in collaborating on projects that promote education, accessibility, or innovation with GenAI.<br>🌱 Currently learning Node.js, Express, MongoDB, AWS, and the latest React features.<br>💬 Ask me about Front-End fundamentals, programming logic, or modern React apps.<br>⚡ Fun fact: I created a CrossFit & Hyrox workout tracker as a PWA that logs my PRs and WODs!</p>
+<p align="left">🔭 I’m focused on building AI-powered recommendation interfaces and a design system at Conductor (BairesDev) using React, Next.js, and Tailwind CSS.<br>👯 I’m interested in collaborating on projects that promote education, accessibility, or innovation with GenAI.<br>🌱 Currently learning Node.js, Express, MongoDB, AWS, and the latest React features.<br>💬 Ask me about Front-End fundamentals, programming logic, or modern React apps.<br>⚡ Fun fact: I created a CrossFit & Hyrox workout tracker as a PWA that logs my PRs and WODs!</p>
 
 ###
 
