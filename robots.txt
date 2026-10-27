@@ -1,21 +1,12 @@
-# Block all crawlers: search engines and AI agents alike
+# Search engines and AI search/answer agents may index the site.
 User-agent: *
-Disallow: /
+Allow: /
 
-# Explicit opt-out for AI crawlers (belt and suspenders)
+# AI training crawlers stay blocked: indexing yes, training no.
 User-agent: GPTBot
 Disallow: /
 
-User-agent: OAI-SearchBot
-Disallow: /
-
-User-agent: ChatGPT-User
-Disallow: /
-
 User-agent: ClaudeBot
-Disallow: /
-
-User-agent: Claude-Web
 Disallow: /
 
 User-agent: anthropic-ai
@@ -24,23 +15,17 @@ Disallow: /
 User-agent: Google-Extended
 Disallow: /
 
+User-agent: Applebot-Extended
+Disallow: /
+
 User-agent: CCBot
 Disallow: /
 
-User-agent: PerplexityBot
-Disallow: /
-
 User-agent: Bytespider
-Disallow: /
-
-User-agent: Applebot-Extended
 Disallow: /
 
 User-agent: meta-externalagent
 Disallow: /
 
 User-agent: cohere-ai
-Disallow: /
-
-User-agent: Amazonbot
 Disallow: /
