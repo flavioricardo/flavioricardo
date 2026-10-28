@@ -1,6 +1,6 @@
 # STATE — Portfólio (flavioricardo/flavioricardo)
 
-**Última sessão:** 2026-09-17 (sessão 4)
+**Última sessão:** 2026-10-27 (sessão 5)
 **No ar:** https://fmeira.dev/ — site completo restaurado (estava temporariamente fora do ar desde 2026-09-10). O domínio, o GitHub Pages e o workflow de deploy continuam ativos; o deploy acontece automaticamente ao mergear esta branch na `main`.
 
 ## Estado atual
@@ -12,7 +12,8 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 - **Conteúdo:** hero, 4 cases comerciais (iFood Order Manager, Magalu e-commerce, Ascensus 401(k), Conductor AISP + Bricks), 8 soluções sob medida (Movva Mais, Cardápio Zap, Agenda Fácil, Claru, Storyline — ex-Trajeto, agora em storyline.fmeira.dev —, Pelota, e dois clientes: Petree Partners e Seaside LNG), sobre, ferramentas, experiência completa com datas, contato.
 - **Bilíngue PT/EN** e **tema claro/escuro**, ambos com persistência em localStorage.
 - **Animações GSAP** (core + ScrollTrigger + DrawSVG via CDN) como progressive enhancement.
-- **Sem indexação:** meta robots + `robots.txt` bloqueiam buscadores e crawlers de IA.
+- **Indexável desde 2026-10-27:** sem meta robots, com `<link rel="canonical">`. O `robots.txt` libera buscadores e agentes de busca de IA (OAI-SearchBot, PerplexityBot) e bloqueia só crawler de treino (GPTBot, ClaudeBot, Google-Extended, CCBot etc.).
+- **Instagram** (`@flavioricardo91`) no grid de contato. O perfil fala com público leigo (IA sem complicar), diferente do site, que fala com recrutador e cliente técnico.
 - **Acessibilidade:** axe-core reporta zero violações WCAG AA nos dois temas.
 
 ## Decisões de arquitetura
@@ -28,11 +29,9 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 
 ## Pendências
 
-- [x] ~~**Colocar o site de volta no ar quando o Flávio pedir**~~ — `index.html` restaurado a partir do commit `012b928`. | Resolvida em: 2026-09-11 (sessão 3)
 - [ ] **Decidir quando tirar o Agenda Fácil do SOON** — o domínio no card passou a ser `agendafacil.fmeira.dev`, que já serve landing completa (agendamento por link, lembrete no WhatsApp, sinal via Pix contra no-show) com cadastro aberto. O Flávio decidiu em 2026-09-17 manter o card como SOON mesmo assim; quando liberar, é desborrar o domínio e ligar o link. | Bloqueia: 1 dos 6 produtos não pode ser visitado por quem lê o site. | Aberta desde: 2026-07-30 (sessão 1)
 - [ ] **NÃO linkar `agenda-facil.app`** — o domínio antigo saiu das mãos do Flávio e hoje serve o **Omnily**, produto de terceiro, com tela de login na raiz. Confirmado no navegador em 2026-09-17. | Aberta desde: 2026-09-17 (sessão 4)
-- [x] ~~**Abrir https://movvamais.app/ no navegador e confirmar que carrega com HTTPS válido**~~ — confirmado pelo Flávio: o domínio está correto e no ar. | Resolvida em: 2026-07-30 (sessão 1)
-- [x] ~~**Apontar o domínio claru.app para o app**~~ — decisão do Flávio: `flavioricardo.github.io/claru` é a URL correta do Claru; não haverá troca de domínio. | Resolvida em: 2026-07-30 (sessão 1)
+- [ ] **[humano] Cadastrar fmeira.dev no Google Search Console e pedir indexação** — depois do merge que tirou o `noindex` (2026-10-27). Sem isso o Google acha o site sozinho, só que mais devagar. | Aberta desde: 2026-10-27 (sessão 5)
 
 ## Próximos passos (opcionais, não bloqueiam)
 
