@@ -15,6 +15,7 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 - **Indexável desde 2026-10-27:** sem meta robots, com `<link rel="canonical">`. O `robots.txt` libera buscadores e agentes de busca de IA (OAI-SearchBot, PerplexityBot) e bloqueia só crawler de treino (GPTBot, ClaudeBot, Google-Extended, CCBot etc.).
 - **Instagram** (`@flavioricardo91`) no grid de contato. O perfil fala com público leigo (IA sem complicar), diferente do site, que fala com recrutador e cliente técnico.
 - **Acessibilidade:** axe-core reporta zero violações WCAG AA nos dois temas.
+- **`/pbt/` (desde 2026-11-12):** protótipo pra cliente (PBT Land & Minerals, via Petree Partners) hospedado aqui por falta de login na Vercel: cópia da página Our Assets do staging da PBT com o palco interativo "eagle stage". Pasta gerada por `python -I spike/build-artifact.py` no repo `pbt-land-minerals` (`spike/dist-jen`), copiada inteira; `noindex` na página e `Disallow: /pbt/` no robots. Apagar quando o site da PBT for ao ar.
 
 ## Decisões de arquitetura
 

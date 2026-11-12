@@ -1,6 +1,7 @@
 # Search engines and AI search/answer agents may index the site.
 User-agent: *
 Allow: /
+Disallow: /pbt/
 
 # AI training crawlers stay blocked: indexing yes, training no.
 User-agent: GPTBot
