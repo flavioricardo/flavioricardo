@@ -1,6 +1,6 @@
 # STATE — Portfólio (flavioricardo/flavioricardo)
 
-**Última sessão:** 2026-10-27 (sessão 5)
+**Última sessão:** 2026-11-16 (sessão 6)
 **No ar:** https://fmeira.dev/ — site completo restaurado (estava temporariamente fora do ar desde 2026-09-10). O domínio, o GitHub Pages e o workflow de deploy continuam ativos; o deploy acontece automaticamente ao mergear esta branch na `main`.
 
 ## Estado atual
@@ -16,6 +16,7 @@ Site pessoal completo em um único `index.html` sem dependências de build, publ
 - **Instagram** (`@flavioricardo91`) no grid de contato. O perfil fala com público leigo (IA sem complicar), diferente do site, que fala com recrutador e cliente técnico.
 - **Acessibilidade:** axe-core reporta zero violações WCAG AA nos dois temas.
 - **`/pbt/` (desde 2026-11-12):** protótipo pra cliente (PBT Land & Minerals, via Petree Partners) hospedado aqui por falta de login na Vercel: cópia da página Our Assets do staging da PBT com o palco interativo "eagle stage". Pasta gerada por `python -I spike/build-artifact.py` no repo `pbt-land-minerals` (`spike/dist-jen`), copiada inteira; `noindex` na página e `Disallow: /pbt/` no robots. Apagar quando o site da PBT for ao ar.
+- **`/cama-matrix-3-em-1-manual-montagem/` (desde 2026-11-16):** guia independente de montagem da Cama Matrix 3 em 1 (Tebarrot), indexável, com link de afiliado do Mercado Livre (`matt_word=flavioricardo91`). Fonte: artifact https://claude.ai/artifact/XL8FsmBzPYbhiYJsJ7BpZx, copiado inteiro (`index.html` + `img/`). Mudança no conteúdo: editar o artifact e recopiar, ou editar direto aqui — o artifact não sincroniza sozinho. Não está linkada na home.
 
 ## Decisões de arquitetura
 
